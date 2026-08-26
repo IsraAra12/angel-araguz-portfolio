@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="es-MX" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07090c">
+  <title>Angel Araguz — Ingeniería de software, IA aplicada y calidad</title>
+  <meta name="description" content="Portafolio de Angel Araguz: ingeniería de software, IA aplicada, automatización, integraciones y calidad para resolver problemas reales.">
+  <meta property="og:title" content="Angel Araguz — Software que resuelve problemas reales">
+  <meta property="og:description" content="Ingeniería de software, IA aplicada, automatización y calidad, de la idea a una solución confiable.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:image" content="assets/images/hero-system.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000; --bg-soft: #0c0e10; --surface: #1d1d1f; --surface-2: #282a2c;
+      --text: #f5f5f7; --muted: #9b9ba1; --muted-2: #6e6e73; --line: rgba(255,255,255,.1);
+      --line-strong: rgba(255,255,255,.18); --blue: #0071e3; --blue-bright: #abc7ff;
+      --green: #5ee6a8; --max: 1240px; --nav: 72px; --ease: cubic-bezier(.16,1,.3,1);
+      --t-fast: 180ms; --t-base: 320ms; --t-slow: 500ms;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); scroll-padding-top: calc(var(--nav) + 20px); }
+    body { margin: 0; background: radial-gradient(circle at 70% 0%, rgba(0,113,227,.12), transparent 34rem), var(--bg); color: var(--text); font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    figure { margin: 0; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    ::selection { color: #fff; background: rgba(77,141,255,.55); }
+    .skip-link { position: fixed; top: 10px; left: 10px; z-index: 1000; padding: 10px 14px; border-radius: 10px; background: #fff; color: #000; transform: translateY(-160%); transition: transform .2s ease; }
+    .skip-link:focus { transform: translateY(0); }
+    .scroll-progress { position: fixed; inset: 0 auto auto 0; z-index: 101; width: 0; height: 2px; background: linear-gradient(90deg, var(--blue), #8b6dff); box-shadow: 0 0 18px var(--blue); }
+    .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .section { padding-block: clamp(88px, 11vw, 152px); }
+    .section-border { border-top: 1px solid var(--line); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 20px; color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 11px; line-height: 1; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: currentColor; }
+    .display { margin: 0; max-width: 950px; font-size: clamp(42px, 7.2vw, 96px); line-height: .98; letter-spacing: -.055em; font-weight: 700; }
+    .heading { margin: 0; font-size: clamp(34px, 5vw, 68px); line-height: 1.04; letter-spacing: -.045em; font-weight: 700; }
+    .subheading { margin: 0; font-size: clamp(26px, 3vw, 42px); line-height: 1.1; letter-spacing: -.035em; font-weight: 650; }
+    .lead { margin: 0; color: var(--muted); font-size: clamp(18px, 2vw, 22px); line-height: 1.65; }
+    .muted { color: var(--muted); }
+    .accent { color: var(--blue-bright); }
+    .nav { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--nav); border-bottom: 1px solid transparent; transition: background .25s ease, border-color .25s ease; }
+    .nav.is-scrolled { background: rgba(0,0,0,.76); border-color: var(--line); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+    .nav__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 750; letter-spacing: -.02em; }
+    .brand__mark { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 10px; background: rgba(255,255,255,.05); font-size: 13px; }
+    .nav__links { display: flex; align-items: center; gap: 7px; }
+    .nav__links a { padding: 10px 13px; border-radius: 999px; color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 650; transition: color .2s ease, background .2s ease; }
+    .nav__links a:hover, .nav__links a[aria-current="true"] { color: var(--text); background: rgba(255,255,255,.06); }
+    .nav__cta { margin-left: 8px; border: 1px solid var(--line-strong); color: var(--text) !important; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.05); color: var(--text); cursor: pointer; }
+    .menu-toggle span, .menu-toggle::before, .menu-toggle::after { content: ""; display: block; width: 18px; height: 1.5px; margin: 4px auto; background: currentColor; transition: transform .25s ease, opacity .2s ease; }
+    .menu-toggle[aria-expanded="true"] span { opacity: 0; }
+    .menu-toggle[aria-expanded="true"]::before { transform: translateY(5.5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"]::after { transform: translateY(-5.5px) rotate(-45deg); }
+    .hero { position: relative; min-height: 100svh; padding-top: calc(var(--nav) + 48px); display: grid; align-items: center; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; width: min(64vw, 900px); aspect-ratio: 1; right: -25%; top: -42%; border-radius: 50%; background: radial-gradient(circle, rgba(0,113,227,.15), rgba(0,113,227,0) 68%); filter: blur(10px); pointer-events: none; }
+    .hero__grid { position: relative; z-index: 1; display: block; padding-block: 68px 90px; }
+    .hero__copy { max-width: 1080px; }
+    .hero__name { margin: 0 0 14px; color: var(--muted); font-size: clamp(18px,2.2vw,27px); line-height: 1.2; font-weight: 600; letter-spacing: -.025em; }
+    .hero__copy .display { font-size: clamp(54px, 8.6vw, 116px); }
+    .hero__copy .lead { max-width: 720px; margin-top: 28px; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .18s var(--ease), background .18s ease, border-color .18s ease; }
+    .button:hover { transform: scale(1.02); }
+    .button:active { transform: scale(.97); }
+    .button--primary { background: var(--blue); color: #fff; }
+    .button--primary:hover { background: #087af1; }
+    .button--secondary { border-color: var(--line-strong); background: rgba(255,255,255,.035); }
+    .button--secondary:hover { border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.075); }
+    .arrow { transition: transform .2s ease; }
+    .button:hover .arrow { transform: translateX(3px); }
+    .hero__meta { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 42px; color: var(--muted-2); font-size: 13px; font-weight: 650; }
+    .hero__meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero__meta span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 12px var(--blue); }
+    .hero-enter { opacity: 0; transform: translateY(16px) scale(.985); animation: hero-enter var(--t-slow) var(--ease) forwards; animation-delay: var(--delay, 0ms); }
+    @keyframes hero-enter { to { opacity: 1; transform: translateY(0) scale(1); } }
+    .hero__scroll { position: absolute; left: max(20px, calc((100vw - var(--max)) / 2)); bottom: 28px; display: inline-flex; align-items: center; gap: 10px; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
+    .hero__scroll::before { content: ""; width: 1px; height: 28px; background: linear-gradient(var(--blue), var(--line)); transform-origin: top; animation: scroll-pulse 2s ease-in-out infinite; }
+    @keyframes scroll-pulse { 0%,100% { transform: scaleY(.35); opacity: .45; } 50% { transform: scaleY(1); opacity: 1; } }
+    .status { display: inline-flex !important; align-items: center; gap: 8px; white-space: nowrap; }
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px rgba(94,230,168,.8); }
+    .capability-bar { border-block: 1px solid var(--line); background: rgba(255,255,255,.018); }
+    .capability-bar__inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .capability { padding: 25px 24px; border-right: 1px solid var(--line); }
+    .capability:first-child { padding-left: 0; }
+    .capability:last-child { border-right: 0; }
+    .capability strong { display: block; margin-bottom: 5px; font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+    .capability span { color: var(--muted-2); font-size: 12px; }
+    .transition-story { position: relative; height: 190svh; border-bottom: 1px solid var(--line); }
+    .transition-story__sticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+    .transition-story__label { position: absolute; top: calc(var(--nav) + 34px); left: max(20px, calc((100vw - var(--max)) / 2)); color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .transition-story__stage { position: relative; width: min(calc(100% - 40px), 1180px); min-height: 220px; display: grid; place-items: center; }
+    .transition-story__line { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; text-align: center; font-size: clamp(52px,9vw,126px); line-height: .95; letter-spacing: -.06em; font-weight: 700; will-change: opacity, transform, filter; }
+    .transition-story__line--second { color: var(--blue-bright); opacity: 0; transform: scale(.985); filter: blur(4px); }
+    .transition-story__progress { position: absolute; left: 50%; bottom: 34px; width: min(240px,42vw); height: 1px; background: var(--line); transform: translateX(-50%); overflow: hidden; }
+    .transition-story__progress span { display: block; width: 100%; height: 100%; background: var(--blue); transform: scaleX(0); transform-origin: left; will-change: transform; }
+    .intro-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(50px, 8vw, 120px); align-items: start; }
+    .intro-grid .lead { max-width: 700px; }
+    .principles { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 42px; }
+    .principle { min-height: 190px; padding: 25px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.035); transition: border-color .18s ease, background .18s ease; }
+    .principle:hover { border-color: rgba(171,199,255,.32); background: rgba(255,255,255,.05); }
+    .principle__number { display: block; margin-bottom: 36px; color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; }
+    .principle h3 { margin: 0 0 10px; font-size: 20px; letter-spacing: -.025em; }
+    .principle p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .ai-flow { position: relative; margin-top: clamp(70px,9vw,118px); padding-top: 34px; border-top: 1px solid var(--line); }
+    .ai-flow__track { position: absolute; left: 6px; right: 6px; top: 40px; height: 1px; background: var(--line); }
+    .ai-flow__track span { display: block; width: 100%; height: 100%; background: var(--blue); transform: scaleX(0); transform-origin: left; will-change: transform; }
+    .ai-flow__steps { display: grid; grid-template-columns: repeat(7,1fr); gap: 14px; }
+    .ai-step { position: relative; padding-top: 34px; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .06em; transition: color var(--t-base) var(--ease), opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease); opacity: .34; }
+    .ai-step::before { content: ""; position: absolute; left: 0; top: 0; width: 12px; height: 12px; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--bg); transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease); }
+    .ai-step.is-active { color: var(--text); opacity: 1; transform: translateY(-2px); }
+    .ai-step.is-active::before { background: var(--blue); border-color: var(--blue); box-shadow: 0 0 0 5px rgba(0,113,227,.12); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: clamp(44px, 7vw, 80px); }
+    .section-head .lead { max-width: 470px; font-size: 17px; }
+    .project { overflow: hidden; border: 1px solid var(--line); border-radius: 28px; background: var(--surface); }
+    .project:hover { border-color: rgba(171,199,255,.26); }
+    .project + .project, .project-grid { margin-top: 22px; }
+    .project--featured { display: grid; grid-template-columns: 1.15fr .85fr; min-height: 590px; }
+    .project__media { position: relative; overflow: hidden; background: #090b0f; }
+    .project__media img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; transition: transform .7s var(--ease); }
+    .project:hover .project__media img { transform: scale(1.025); }
+    .project__content { display: flex; flex-direction: column; padding: clamp(28px, 4.5vw, 56px); }
+    .project__index { margin-bottom: auto; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+    .project__content h3 { margin: 40px 0 8px; font-size: clamp(34px, 4vw, 54px); line-height: 1; letter-spacing: -.045em; }
+    .project__role { margin: 0 0 24px; color: var(--blue-bright); font-size: 14px; font-weight: 750; }
+    .project__content > p:not(.project__role):not(.project__index) { margin: 0; color: var(--muted); line-height: 1.75; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 30px; }
+    .tag { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: #c7c7cc; font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 500; }
+    .project-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+    .project-grid .project { display: flex; flex-direction: column; }
+    .project-grid .project__media { aspect-ratio: 16 / 10; }
+    .project-grid .project__media img { min-height: 0; }
+    .project-grid .project__content { min-height: 430px; }
+    .project-grid .project__content h3 { margin-top: 34px; }
+    .project__result { margin-top: auto !important; padding-top: 32px; color: var(--text) !important; font-size: 14px; font-weight: 650; }
+    .project-link { display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 22px; color: var(--blue-bright); font-size: 13px; font-weight: 700; text-decoration: none; }
+    .project-link::after { content: "→"; transition: transform var(--t-fast) var(--ease); }
+    .project-link:hover::after { transform: translateX(3px); }
+    .aura-intro { display: grid; grid-template-columns: .55fr 1.45fr; gap: clamp(38px,7vw,90px); align-items: end; padding: clamp(32px,5vw,64px); border: 1px solid var(--line); border-radius: 28px; background: var(--surface); }
+    .aura-intro__title h3 { margin: 10px 0 8px; font-size: clamp(48px,7vw,92px); line-height: .92; letter-spacing: -.055em; }
+    .aura-intro__body > p { max-width: 680px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.7; }
+    .aura-story { position: relative; height: 300svh; margin-top: 22px; }
+    .aura-story__sticky { position: sticky; top: var(--nav); height: calc(100svh - var(--nav)); display: grid; grid-template-columns: 1.12fr .88fr; gap: clamp(34px,6vw,82px); align-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 28px; background: #0c0e10; }
+    .aura-story__media { position: relative; height: 100%; min-height: 0; overflow: hidden; background: #050608; }
+    .aura-story__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.01); will-change: transform; }
+    .aura-story__badge { position: absolute; left: 22px; top: 22px; z-index: 2; padding: 8px 11px; border: 1px solid var(--line); border-radius: 999px; background: rgba(0,0,0,.64); backdrop-filter: blur(16px); color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+    .aura-story__content { position: relative; height: min(330px,50vh); margin-right: clamp(28px,5vw,68px); }
+    .aura-state { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; transform: translateY(18px) scale(.99); pointer-events: none; transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease); }
+    .aura-state.is-active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .aura-state__index { color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .aura-state h4 { margin: 22px 0 16px; font-size: clamp(34px,4vw,56px); line-height: 1; letter-spacing: -.045em; }
+    .aura-state p { max-width: 460px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .aura-story__dots { position: absolute; right: clamp(28px,5vw,68px); bottom: 34px; display: flex; gap: 7px; }
+    .aura-story__dots span { width: 28px; height: 2px; background: var(--line-strong); transition: background var(--t-base) ease, transform var(--t-base) ease; transform-origin: left; }
+    .aura-story__dots span.is-active { background: var(--blue); transform: scaleX(1.15); }
+    .quality-card { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(36px,6vw,80px); margin-top: 22px; padding: clamp(32px,5vw,66px); border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(135deg, #1d1d1f, #0c0e10); }
+    .quality-card h3 { margin: 15px 0 18px; font-size: clamp(34px,4.5vw,58px); line-height: 1; letter-spacing: -.045em; }
+    .quality-card p { margin: 0; color: var(--muted); line-height: 1.7; }
+    .test-flow { display: grid; grid-template-columns: repeat(5,1fr); align-items: center; gap: 7px; }
+    .test-node { position: relative; min-width: 0; padding: 18px 8px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.035); text-align: center; font-size: 10px; font-weight: 800; letter-spacing: .06em; }
+    .test-node:not(:last-child)::after { content: ""; position: absolute; left: 100%; top: 50%; width: 8px; height: 1px; background: rgba(117,166,255,.5); }
+    .test-node:last-child { color: var(--blue-bright); border-color: rgba(117,166,255,.35); background: rgba(77,141,255,.1); }
+    .process { display: grid; grid-template-columns: repeat(4,1fr); border-block: 1px solid var(--line); }
+    .process__step { padding: 34px 28px 38px; border-right: 1px solid var(--line); }
+    .process__step:first-child { padding-left: 0; }
+    .process__step:last-child { border-right: 0; }
+    .process__step span { color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; }
+    .process__step h3 { margin: 42px 0 12px; font-size: 21px; letter-spacing: -.025em; }
+    .process__step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .experience-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(48px,8vw,120px); }
+    .timeline { border-top: 1px solid var(--line); }
+    .timeline__item { display: grid; grid-template-columns: 135px 1fr; gap: 30px; padding-block: 34px; border-bottom: 1px solid var(--line); }
+    .timeline__date { color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 11px; line-height: 1.7; font-weight: 500; }
+    .timeline h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -.025em; }
+    .timeline__company { margin: 0 0 12px; color: var(--blue-bright); font-size: 14px; font-weight: 700; }
+    .timeline__copy { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .toolkit { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 50px; }
+    .tool-group { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.025); }
+    .tool-group h3 { margin: 0 0 22px; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .tool-group p { margin: 0; color: #c8ced8; font-size: 14px; line-height: 1.9; }
+    .contact { padding-block: clamp(100px,14vw,190px); text-align: center; }
+    .contact .heading { max-width: 950px; margin-inline: auto; }
+    .contact .lead { max-width: 670px; margin: 28px auto 0; }
+    .contact .hero__actions { justify-content: center; }
+    .contact__email { display: inline-block; margin-top: 34px; color: var(--muted); font-size: 14px; text-underline-offset: 5px; }
+    .contact__email:hover { color: var(--text); }
+    .brand-lockup {
+      width: min(180px, 46vw);
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      margin: 0 auto 34px;
+      border-radius: 18px;
+    }
+    .footer { border-top: 1px solid var(--line); }
+    .footer__inner { min-height: 125px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .footer p { margin: 0; color: var(--muted-2); font-size: 12px; }
+    .footer__links { display: flex; gap: 24px; }
+    .footer__links a { color: var(--muted); font-size: 13px; font-weight: 650; text-decoration: none; }
+    .footer__links a:hover { color: var(--text); }
+    .reveal { opacity: 0; transform: translateY(20px) scale(.99); transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease), border-color var(--t-base) ease, background var(--t-base) ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 4px; }
+    @media (max-width: 980px) {
+      .nav__links { display: none; position: fixed; inset: var(--nav) 0 0; padding: 28px 20px 45px; background: rgba(7,9,12,.98); flex-direction: column; align-items: stretch; justify-content: flex-start; }
+      .nav__links.is-open { display: flex; }
+      .nav__links a { padding: 17px 12px; border-bottom: 1px solid var(--line); border-radius: 0; font-size: 24px; color: var(--text); }
+      .nav__links.is-open a { opacity: 0; transform: translateY(14px); animation: menu-item-in var(--t-base) var(--ease) forwards; }
+      .nav__links.is-open a:nth-child(1) { animation-delay: 40ms; }
+      .nav__links.is-open a:nth-child(2) { animation-delay: 80ms; }
+      .nav__links.is-open a:nth-child(3) { animation-delay: 120ms; }
+      .nav__links.is-open a:nth-child(4) { animation-delay: 160ms; }
+      .nav__links.is-open a:nth-child(5) { animation-delay: 200ms; }
+      @keyframes menu-item-in { to { opacity: 1; transform: translateY(0); } }
+      .nav__cta { margin: 14px 0 0; border: 0; border-radius: 999px !important; background: var(--text) !important; color: #080a0e !important; text-align: center; }
+      .menu-toggle { display: block; }
+      .hero__grid { padding-block: 60px 86px; }
+      .intro-grid, .experience-layout { grid-template-columns: 1fr; }
+      .intro-grid .heading, .experience-layout .heading { max-width: 750px; }
+      .ai-flow__track { left: 8px; right: auto; top: 45px; bottom: 0; width: 1px; height: auto; }
+      .ai-flow__track span { transform: scaleY(0); transform-origin: top; }
+      .ai-flow__steps { grid-template-columns: 1fr; gap: 30px; padding-left: 34px; }
+      .ai-step { padding-top: 0; }
+      .ai-step::before { left: -32px; top: 2px; }
+      .aura-intro { grid-template-columns: 1fr; align-items: start; }
+      .aura-story__sticky { grid-template-columns: 1fr; grid-template-rows: minmax(0,1.15fr) minmax(245px,.85fr); }
+      .aura-story__content { height: 220px; margin: 0 28px 34px; }
+      .aura-story__dots { right: 28px; bottom: 24px; }
+      .project--featured { grid-template-columns: 1fr; }
+      .project--featured .project__media { aspect-ratio: 16 / 10; }
+      .project--featured .project__content { min-height: 430px; }
+      .process { grid-template-columns: repeat(2,1fr); }
+      .process__step:nth-child(2) { border-right: 0; }
+      .process__step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .process__step:nth-child(3) { padding-left: 0; }
+      .toolkit { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 700px) {
+      :root { --nav: 64px; }
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .section { padding-block: 82px; }
+      .brand__mark { width: 32px; height: 32px; }
+      .hero { min-height: 100svh; padding-top: var(--nav); }
+      .hero__grid { padding-block: 52px 94px; }
+      .hero__copy .display { font-size: clamp(48px,14.3vw,68px); }
+      .hero__copy .lead { margin-top: 22px; font-size: 17px; }
+      .hero__actions { display: grid; }
+      .button { width: 100%; }
+      .hero__meta { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+      .hero__scroll { left: 14px; bottom: 24px; }
+      .transition-story { height: 175svh; }
+      .transition-story__label { left: 14px; }
+      .transition-story__stage { width: calc(100% - 28px); }
+      .transition-story__line { font-size: clamp(52px,15vw,76px); }
+      .capability-bar__inner { grid-template-columns: repeat(2,1fr); }
+      .capability { padding: 19px 14px; border-bottom: 1px solid var(--line); }
+      .capability:nth-child(2) { border-right: 0; }
+      .capability:nth-child(n+3) { border-bottom: 0; }
+      .capability:first-child { padding-left: 14px; }
+      .principles, .project-grid, .toolkit { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head .lead { margin-top: 22px; }
+      .project, .quality-card { border-radius: 22px; }
+      .aura-intro, .aura-story__sticky { border-radius: 22px; }
+      .aura-story { height: 320svh; }
+      .aura-story__sticky { top: var(--nav); height: calc(100svh - var(--nav)); grid-template-rows: minmax(0,1.08fr) minmax(250px,.92fr); }
+      .aura-story__content { height: 205px; margin: 0 22px 42px; }
+      .aura-state h4 { margin-block: 15px 12px; }
+      .aura-state p { font-size: 14px; }
+      .aura-story__badge { left: 15px; top: 15px; }
+      .aura-story__dots { right: 22px; bottom: 22px; }
+      .project__content, .project-grid .project__content, .project--featured .project__content { min-height: auto; }
+      .project__index { margin-bottom: 0; }
+      .project__content h3 { margin-top: 34px; }
+      .project__result { margin-top: 30px !important; }
+      .project__media img { min-height: 300px; }
+      .quality-card { grid-template-columns: 1fr; }
+      .test-flow { grid-template-columns: 1fr; }
+      .test-node:not(:last-child)::after { left: 50%; top: 100%; width: 1px; height: 8px; }
+      .process { grid-template-columns: 1fr; }
+      .process__step, .process__step:nth-child(3) { padding: 28px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .process__step:last-child { border-bottom: 0; }
+      .process__step h3 { margin-top: 24px; }
+      .timeline__item { grid-template-columns: 1fr; gap: 12px; }
+      .footer__inner { padding-block: 28px; align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-enter { opacity: 1; transform: none; animation: none; }
+      .hero__scroll::before { animation: none; }
+      .transition-story { height: auto; }
+      .transition-story__sticky { position: relative; height: auto; min-height: 75svh; padding-block: 120px; }
+      .transition-story__stage { display: flex; flex-direction: column; gap: 24px; }
+      .transition-story__line { position: static; opacity: 1 !important; transform: none !important; filter: none !important; }
+      .transition-story__progress { display: none; }
+      .ai-flow__track span { transform: none !important; }
+      .ai-step { opacity: 1; color: var(--text); transform: none; }
+      .aura-story { height: auto; }
+      .aura-story__sticky { position: relative; top: auto; height: auto; grid-template-columns: 1fr; overflow: visible; }
+      .aura-story__media { min-height: 420px; }
+      .aura-story__content { height: auto; margin: 0; padding: 34px; }
+      .aura-state { position: static; opacity: 1; transform: none; padding-block: 22px; pointer-events: auto; }
+      .aura-story__dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio"><span class="brand__mark" aria-hidden="true">AA</span><span>Angel Araguz</span></a>
+      <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+        <a href="#trabajo">Proyectos</a><a href="#enfoque">Enfoque</a><a href="#experiencia">Experiencia</a><a href="#herramientas">Herramientas</a><a class="nav__cta" href="#contacto">Hablemos</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="nav-links" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow hero-enter" style="--delay: 80ms">Software · IA · Automatización · Calidad</p>
+          <p class="hero__name hero-enter" style="--delay: 150ms">Angel Araguz</p>
+          <h1 class="display hero-enter" style="--delay: 220ms">Construyo software inteligente<br><span class="accent">que sí funciona.</span></h1>
+          <p class="lead hero-enter" style="--delay: 300ms">Ingeniería de software, IA aplicada, automatización e ingeniería de calidad enfocadas en resolver problemas del mundo real.</p>
+          <div class="hero__actions hero-enter" style="--delay: 380ms"><a class="button button--primary" href="#trabajo">Explorar mi trabajo <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="mailto:angelauriazul25@gmail.com">Hablemos</a></div>
+          <div class="hero__meta hero-enter" style="--delay: 460ms" aria-label="Áreas de especialidad"><span>Ingeniería de software</span><span>IA aplicada</span><span>Automatización</span><span>Ingeniería de calidad</span></div>
+        </div>
+      </div>
+      <a class="hero__scroll hero-enter" style="--delay: 560ms" href="#transicion">Desliza para explorar</a>
+    </section>
+    <div class="capability-bar" aria-label="Capacidades principales">
+      <div class="container capability-bar__inner"><div class="capability"><strong>Construir</strong><span>Apps y plataformas</span></div><div class="capability"><strong>Integrar</strong><span>APIs y sistemas</span></div><div class="capability"><strong>Automatizar</strong><span>Procesos repetitivos</span></div><div class="capability"><strong>Validar</strong><span>Calidad y confiabilidad</span></div></div>
+    </div>
+    <section class="transition-story" id="transicion" aria-label="De problemas complejos a sistemas más inteligentes">
+      <div class="transition-story__sticky">
+        <p class="transition-story__label">PRINCIPIO / 001</p>
+        <div class="transition-story__stage">
+          <h2 class="transition-story__line transition-story__line--first">Problemas complejos.</h2>
+          <h2 class="transition-story__line transition-story__line--second">Sistemas más inteligentes.</h2>
+        </div>
+        <div class="transition-story__progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="section" id="enfoque">
+      <div class="container intro-grid">
+        <div class="reveal"><p class="eyebrow">Inteligencia aplicada</p><h2 class="heading">IA como impulso.<br><span class="accent">No como adorno.</span></h2></div>
+        <div>
+          <p class="lead reveal">Antes de elegir herramientas, entiendo a las personas, los datos, las restricciones y el comportamiento esperado. Así puedo construir algo útil, medible y preparado para operar en el mundo real.</p>
+          <div class="principles">
+            <article class="principle reveal"><span class="principle__number">01 · ENTENDER</span><h3>Contexto antes que código</h3><p>Objetivos, usuarios, riesgos y criterios de éxito claros desde el inicio.</p></article>
+            <article class="principle reveal"><span class="principle__number">02 · CONSTRUIR</span><h3>Simplicidad con intención</h3><p>Arquitecturas mantenibles e interfaces que reducen fricción.</p></article>
+            <article class="principle reveal"><span class="principle__number">03 · CONECTAR</span><h3>Sistemas que colaboran</h3><p>APIs, automatizaciones y datos integrados en flujos coherentes.</p></article>
+            <article class="principle reveal"><span class="principle__number">04 · VALIDAR</span><h3>Calidad incorporada</h3><p>Pruebas y revisión continua para que la solución funcione de verdad.</p></article>
+          </div>
+          <div class="ai-flow reveal" id="ai-flow" aria-label="Flujo de trabajo con inteligencia artificial">
+            <div class="ai-flow__track" aria-hidden="true"><span></span></div>
+            <div class="ai-flow__steps">
+              <div class="ai-step">OBJETIVO</div><div class="ai-step">CONTEXTO</div><div class="ai-step">AGENTE / LLM</div><div class="ai-step">IMPLEMENTACIÓN</div><div class="ai-step">REVISIÓN</div><div class="ai-step">PRUEBAS</div><div class="ai-step">VALIDACIÓN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border" id="trabajo">
+      <div class="container">
+        <header class="section-head reveal"><div><p class="eyebrow">Trabajo seleccionado</p><h2 class="heading">Productos con propósito.</h2></div><p class="lead">Una selección de plataformas, integraciones y sistemas donde producto, ingeniería y calidad trabajan como una sola disciplina.</p></header>
+        <article class="aura-intro reveal">
+          <div class="aura-intro__title"><p class="project__index">01 · Proyecto destacado</p><h3>AURA</h3><p class="project__role">Plataforma personal de IA</p></div>
+          <div class="aura-intro__body"><p>Una interfaz. Múltiples proveedores de inteligencia. AURA conecta modelos locales y servicios en la nube dentro de una arquitectura controlada y extensible.</p><div class="tags" aria-label="Tecnologías utilizadas en AURA"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tauri</span><span class="tag">FastAPI</span><span class="tag">OpenAI</span><span class="tag">Codex</span><span class="tag">Ollama</span></div></div>
+        </article>
+        <div class="aura-story" id="aura-story" aria-label="Historia del proyecto AURA">
+          <div class="aura-story__sticky">
+            <figure class="aura-story__media"><span class="aura-story__badge" id="aura-badge">Interfaz</span><img src="assets/images/aura-platform.webp" width="1536" height="1024" alt="Interfaz conceptual de AURA, una plataforma personal de inteligencia artificial" loading="lazy" decoding="async"></figure>
+            <div class="aura-story__content">
+              <article class="aura-state is-active" data-label="Interfaz"><span class="aura-state__index">01 / INTERFAZ</span><h4>Una experiencia de escritorio enfocada.</h4><p>Construida con React y Tauri para reunir conversación, herramientas y controles en un solo espacio.</p></article>
+              <article class="aura-state" data-label="Inteligencia"><span class="aura-state__index">02 / INTELIGENCIA</span><h4>Modelos locales y en la nube.</h4><p>OpenAI, Codex y Ollama funcionan detrás de una capa común de proveedores y rutas configurables.</p></article>
+              <article class="aura-state" data-label="Control"><span class="aura-state__index">03 / CONTROL</span><h4>Permisos antes de ejecutar.</h4><p>Límites de proveedor, ejecución controlada y rutas de respaldo mantienen las acciones bajo supervisión.</p></article>
+              <article class="aura-state" data-label="Calidad"><span class="aura-state__index">04 / CALIDAD</span><h4>Validada de punta a punta.</h4><p>Pruebas unitarias, integración, linting y validación de compilación convierten la idea en producto confiable.</p></article>
+            </div>
+            <div class="aura-story__dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="project-grid">
+          <article class="project reveal"><div class="project__media"><img src="assets/images/rapyvet-system.webp" width="1536" height="1024" alt="Visualización de un sistema empresarial conectado para ventas, inventario, clientes y automatización" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">02 · Sistemas empresariales</p><h3>Rapyvet</h3><p class="project__role">Digitalización y operaciones</p><p>Herramientas internas e integraciones diseñadas alrededor del trabajo diario: ventas, pedidos, clientes, inventario, facturación y movilidad conectados con el sistema empresarial.</p><div class="tags"><span class="tag">Odoo Enterprise</span><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">Automatización</span></div><p class="project__result">Procesos más claros en la superficie y conexiones sólidas por debajo.</p><a class="project-link" href="https://rapyvet.vercel.app" target="_blank" rel="noopener noreferrer">Visitar Rapyvet</a></div></article>
+          <article class="project reveal"><div class="project__media"><img src="assets/images/vetflow-clinical.webp" width="1536" height="1024" alt="Tableta con una interfaz conceptual para administrar pacientes, citas y expedientes veterinarios" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">03 · Desarrollo de producto</p><h3>VetFlow</h3><p class="project__role">Plataforma de gestión clínica</p><p>Aplicación web responsiva para organizar pacientes, expedientes, citas y seguimientos clínicos sin perder contexto entre tareas.</p><div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">UX responsiva</span><span class="tag">Vercel</span></div><p class="project__result">Información organizada · Flujos claros · Experiencia adaptable a cada pantalla</p><a class="project-link" href="https://vet-flow-psi.vercel.app" target="_blank" rel="noopener noreferrer">Visitar VetFlow</a></div></article>
+        </div>
+        <article class="quality-card reveal">
+          <div><p class="eyebrow">04 · Ingeniería de calidad</p><h3>Urban Routes</h3><p>Automatización de pruebas sobre recorridos reales de usuario: interfaz, pagos, tráfico de red, respuestas del sistema y validaciones de punta a punta.</p><div class="tags"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Pytest</span><span class="tag">Chrome DevTools</span></div></div>
+          <div class="test-flow" aria-label="Flujo de validación de Urban Routes"><div class="test-node">ACCIÓN</div><div class="test-node">INTERFAZ</div><div class="test-node">RED</div><div class="test-node">RESPUESTA</div><div class="test-node">VALIDACIÓN</div></div>
+        </article>
+      </div>
+    </section>
+    <section class="section section-border" aria-labelledby="proceso-titulo">
+      <div class="container">
+        <header class="section-head reveal"><div><p class="eyebrow">Cómo trabajo</p><h2 class="heading" id="proceso-titulo">De la incertidumbre a una solución validada.</h2></div></header>
+        <div class="process"><article class="process__step reveal"><span>01</span><h3>Definir</h3><p>Alineo el objetivo, el contexto, las dependencias y lo que significa que el proyecto tenga éxito.</p></article><article class="process__step reveal"><span>02</span><h3>Diseñar</h3><p>Convierto el problema en flujos claros, decisiones técnicas y una experiencia fácil de entender.</p></article><article class="process__step reveal"><span>03</span><h3>Construir</h3><p>Implemento por capas, conecto sistemas y uso IA donde genera valor real.</p></article><article class="process__step reveal"><span>04</span><h3>Validar</h3><p>Pruebo, observo, corrijo y documento para entregar una solución confiable.</p></article></div>
+      </div>
+    </section>
+    <section class="section section-border" id="experiencia">
+      <div class="container experience-layout">
+        <div class="reveal"><p class="eyebrow">Experiencia</p><h2 class="heading">Resolver, construir y mejorar.</h2></div>
+        <div class="timeline">
+          <article class="timeline__item reveal"><div class="timeline__date">2026 — HOY<br>MÉXICO</div><div><h3>Ingeniero de calidad de software y consultor de TI</h3><p class="timeline__company">Independiente</p><p class="timeline__copy">Desarrollo de software, aseguramiento de calidad, automatización, integraciones con APIs, ingeniería asistida por IA y consultoría de sistemas empresariales.</p></div></article>
+          <article class="timeline__item reveal"><div class="timeline__date">2021 — 2022<br>MONTERREY</div><div><h3>Consultor de Soluciones Apple</h3><p class="timeline__company">Apple</p><p class="timeline__copy">Consultoría técnica, diagnóstico, análisis de necesidades, capacitación de equipos, transferencia de conocimiento y mejora continua.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border" id="herramientas">
+      <div class="container"><div class="reveal"><p class="eyebrow">Herramientas</p><h2 class="heading">Tecnología elegida por lo que resuelve.</h2></div><div class="toolkit"><article class="tool-group reveal"><h3>Software</h3><p>Python · TypeScript · JavaScript · SQL · HTML · CSS</p></article><article class="tool-group reveal"><h3>Producto</h3><p>React · FastAPI · Tauri · Vite · REST APIs · Vercel</p></article><article class="tool-group reveal"><h3>IA aplicada</h3><p>OpenAI · Codex · ChatGPT · Ollama · Agentes · Modelos locales</p></article><article class="tool-group reveal"><h3>Calidad y negocio</h3><p>Pytest · Selenium · Vitest · Postman · Odoo · GitHub · Jira</p></article></div></div>
+    </section>
+    <section class="contact section-border" id="contacto">
+      <div class="container reveal"><img class="brand-lockup" src="assets/images/angel-araguz-logo.webp" width="1024" height="1024" alt="Logotipo de Angel Araguz" loading="lazy" decoding="async"><p class="eyebrow">Hablemos</p><h2 class="heading">¿Tienes un problema que vale la pena resolver?</h2><p class="lead">Construyamos algo útil, claro y confiable. Puedo ayudarte a convertir una necesidad operativa o técnica en una solución que funcione.</p><div class="hero__actions"><a class="button button--primary" href="mailto:angelauriazul25@gmail.com">Cuéntame sobre tu proyecto <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="https://github.com/IsraAra12" target="_blank" rel="noopener noreferrer">Ver GitHub</a></div><a class="contact__email" href="mailto:angelauriazul25@gmail.com">angelauriazul25@gmail.com</a></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer__inner"><p>© 2026 Angel Araguz · Nuevo León, México</p><div class="footer__links"><a href="https://linkedin.com/in/angelaraguzgzz" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/IsraAra12" target="_blank" rel="noopener noreferrer">GitHub</a><a href="#inicio">Volver arriba ↑</a></div></div></footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const nav = document.getElementById('nav');
+      const progress = document.getElementById('scroll-progress');
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const links = [...navLinks.querySelectorAll('a[href^="#"]')];
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const transitionStory = document.getElementById('transicion');
+      const transitionFirst = transitionStory?.querySelector('.transition-story__line--first');
+      const transitionSecond = transitionStory?.querySelector('.transition-story__line--second');
+      const transitionProgress = transitionStory?.querySelector('.transition-story__progress span');
+      const aiFlow = document.getElementById('ai-flow');
+      const aiSteps = [...document.querySelectorAll('.ai-step')];
+      const aiTrack = aiFlow?.querySelector('.ai-flow__track span');
+      const auraStory = document.getElementById('aura-story');
+      const auraStates = [...document.querySelectorAll('.aura-state')];
+      const auraDots = [...document.querySelectorAll('.aura-story__dots span')];
+      const auraBadge = document.getElementById('aura-badge');
+      const auraImage = auraStory?.querySelector('.aura-story__media img');
+      const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+
+      const updateChrome = () => {
+        nav.classList.toggle('is-scrolled', window.scrollY > 10);
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
+      };
+
+      const updateScrollMotion = () => {
+        updateChrome();
+        if (reduceMotion) return;
+
+        if (transitionStory && transitionFirst && transitionSecond) {
+          const rect = transitionStory.getBoundingClientRect();
+          const range = Math.max(1, rect.height - window.innerHeight);
+          const storyProgress = clamp(-rect.top / range);
+          const firstFade = clamp((storyProgress - .16) / .34);
+          const secondFade = clamp((storyProgress - .36) / .34);
+          transitionFirst.style.opacity = String(1 - firstFade);
+          transitionFirst.style.transform = `scale(${1 + storyProgress * .035})`;
+          transitionFirst.style.filter = `blur(${firstFade * 3}px)`;
+          transitionSecond.style.opacity = String(secondFade);
+          transitionSecond.style.transform = `scale(${.985 + secondFade * .015})`;
+          transitionSecond.style.filter = `blur(${(1 - secondFade) * 4}px)`;
+          if (transitionProgress) transitionProgress.style.transform = `scaleX(${storyProgress})`;
+        }
+
+        if (aiFlow && aiTrack) {
+          const rect = aiFlow.getBoundingClientRect();
+          const flowProgress = clamp((window.innerHeight * .76 - rect.top) / Math.max(1, rect.height + window.innerHeight * .18));
+          const activeSteps = Math.ceil(flowProgress * aiSteps.length);
+          aiSteps.forEach((step, index) => step.classList.toggle('is-active', index < activeSteps));
+          aiTrack.style.transform = window.innerWidth <= 980 ? `scaleY(${flowProgress})` : `scaleX(${flowProgress})`;
+        }
+
+        if (auraStory && auraStates.length) {
+          const rect = auraStory.getBoundingClientRect();
+          const stickyHeight = window.innerHeight - nav.offsetHeight;
+          const range = Math.max(1, rect.height - stickyHeight);
+          const auraProgress = clamp((nav.offsetHeight - rect.top) / range);
+          const activeIndex = Math.min(auraStates.length - 1, Math.floor(auraProgress * auraStates.length));
+          auraStates.forEach((state, index) => state.classList.toggle('is-active', index === activeIndex));
+          auraDots.forEach((dot, index) => dot.classList.toggle('is-active', index === activeIndex));
+          if (auraBadge) auraBadge.textContent = auraStates[activeIndex].dataset.label || '';
+          if (auraImage) auraImage.style.transform = `scale(${1.01 + auraProgress * .025})`;
+        }
+      };
+
+      let scrollFrame = 0;
+      const requestScrollUpdate = () => {
+        if (scrollFrame) return;
+        scrollFrame = requestAnimationFrame(() => {
+          updateScrollMotion();
+          scrollFrame = 0;
+        });
+      };
+      updateScrollMotion();
+      window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+      window.addEventListener('resize', requestScrollUpdate, { passive: true });
+      const closeMenu = () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menú');
+        navLinks.classList.remove('is-open');
+        document.body.classList.remove('menu-open');
+      };
+      menuToggle.addEventListener('click', () => {
+        const willOpen = menuToggle.getAttribute('aria-expanded') !== 'true';
+        menuToggle.setAttribute('aria-expanded', String(willOpen));
+        menuToggle.setAttribute('aria-label', willOpen ? 'Cerrar menú' : 'Abrir menú');
+        navLinks.classList.toggle('is-open', willOpen);
+        document.body.classList.toggle('menu-open', willOpen);
+        if (willOpen) links[0]?.focus();
+      });
+      links.forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', event => {
+        if (!navLinks.classList.contains('is-open')) return;
+        if (event.key === 'Escape') {
+          closeMenu();
+          menuToggle.focus();
+          return;
+        }
+        if (event.key === 'Tab') {
+          const focusable = [menuToggle, ...links];
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+          else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+      });
+      const revealItems = document.querySelectorAll('.reveal:not(.is-visible)');
+      if (reduceMotion || !('IntersectionObserver' in window)) { revealItems.forEach(item => item.classList.add('is-visible')); }
+      else {
+        const revealObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); } }); }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+        revealItems.forEach(item => revealObserver.observe(item));
+      }
+      const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if (!entry.isIntersecting) return; links.forEach(link => link.removeAttribute('aria-current')); const active = links.find(link => link.getAttribute('href') === `#${entry.target.id}`); active?.setAttribute('aria-current', 'true'); }); }, { rootMargin: '-25% 0px -65% 0px' });
+        sections.forEach(section => sectionObserver.observe(section));
+      }
+    });
+  </script>
+</body>
+</html>
