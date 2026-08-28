@@ -58,6 +58,11 @@
     .nav__links a { padding: 10px 13px; border-radius: 999px; color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 650; transition: color .2s ease, background .2s ease; }
     .nav__links a:hover, .nav__links a[aria-current="true"] { color: var(--text); background: rgba(255,255,255,.06); }
     .nav__cta { margin-left: 8px; border: 1px solid var(--line-strong); color: var(--text) !important; }
+    .nav__controls { display: flex; align-items: center; gap: 10px; margin-left: 12px; }
+    .language-switch { display: inline-flex; align-items: center; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.035); }
+    .language-switch button { min-width: 34px; height: 30px; padding: 0 9px; border: 0; border-radius: 999px; background: transparent; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 700; letter-spacing: .06em; cursor: pointer; transition: color var(--t-fast) ease, background var(--t-fast) ease, box-shadow var(--t-fast) ease; }
+    .language-switch button:hover { color: var(--text); }
+    .language-switch button[aria-pressed="true"] { color: #fff; background: var(--blue); box-shadow: 0 0 16px rgba(0,113,227,.3); }
     .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.05); color: var(--text); cursor: pointer; }
     .menu-toggle span, .menu-toggle::before, .menu-toggle::after { content: ""; display: block; width: 18px; height: 1.5px; margin: 4px auto; background: currentColor; transition: transform .25s ease, opacity .2s ease; }
     .menu-toggle[aria-expanded="true"] span { opacity: 0; }
@@ -225,6 +230,7 @@
       .nav__links.is-open a:nth-child(5) { animation-delay: 200ms; }
       @keyframes menu-item-in { to { opacity: 1; transform: translateY(0); } }
       .nav__cta { margin: 14px 0 0; border: 0; border-radius: 999px !important; background: var(--text) !important; color: #080a0e !important; text-align: center; }
+      .nav__controls { margin-left: auto; }
       .menu-toggle { display: block; }
       .hero__grid { padding-block: 60px 86px; }
       .intro-grid, .experience-layout { grid-template-columns: 1fr; }
@@ -252,6 +258,9 @@
       .container { width: min(calc(100% - 28px), var(--max)); }
       .section { padding-block: 82px; }
       .brand__mark { width: 32px; height: 32px; }
+      .brand > span:last-child { display: none; }
+      .nav__controls { gap: 7px; }
+      .language-switch button { min-width: 31px; height: 28px; padding-inline: 7px; font-size: 9px; }
       .hero { min-height: 100svh; padding-top: var(--nav); }
       .hero__grid { padding-block: 52px 94px; }
       .hero__copy .display { font-size: clamp(48px,14.3vw,68px); }
@@ -330,7 +339,13 @@
       <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
         <a href="#trabajo">Proyectos</a><a href="#enfoque">Enfoque</a><a href="#experiencia">Experiencia</a><a href="#herramientas">Herramientas</a><a class="nav__cta" href="#contacto">Hablemos</a>
       </nav>
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="nav-links" aria-expanded="false"><span></span></button>
+      <div class="nav__controls">
+        <div class="language-switch" id="language-switch" role="group" aria-label="Cambiar idioma">
+          <button type="button" data-locale="es-MX" aria-label="Cambiar a español latino" aria-pressed="true">ES</button>
+          <button type="button" data-locale="en-US" aria-label="Switch to US English" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="nav-links" aria-expanded="false"><span></span></button>
+      </div>
     </div>
   </header>
   <main id="contenido">
@@ -459,7 +474,234 @@
       const auraBadge = document.getElementById('aura-badge');
       const auraImages = [...(auraStory?.querySelectorAll('.aura-story__media img') || [])];
       const particleCanvas = document.getElementById('particle-field');
+      const languageSwitch = document.getElementById('language-switch');
+      const localeButtons = [...languageSwitch.querySelectorAll('[data-locale]')];
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+      let currentLocale = 'es-MX';
+
+      const englishText = [
+        ['.skip-link', 'Skip to content'],
+        ['.nav__links a:nth-child(1)', 'Projects'],
+        ['.nav__links a:nth-child(2)', 'Approach'],
+        ['.nav__links a:nth-child(3)', 'Experience'],
+        ['.nav__links a:nth-child(4)', 'Tools'],
+        ['.nav__links a:nth-child(5)', "Let's talk"],
+        ['.hero__copy > .eyebrow', 'Software · AI · Automation · Quality'],
+        ['.hero__copy > .lead', 'Software engineering, applied AI, automation, and quality engineering focused on solving real-world problems.'],
+        ['.hero__copy .hero__actions .button--secondary', "Let's talk"],
+        ['.hero__meta span:nth-child(1)', 'Software engineering'],
+        ['.hero__meta span:nth-child(2)', 'Applied AI'],
+        ['.hero__meta span:nth-child(3)', 'Automation'],
+        ['.hero__meta span:nth-child(4)', 'Quality engineering'],
+        ['.hero__scroll', 'Scroll to explore'],
+        ['.capability:nth-child(1) strong', 'Build'],
+        ['.capability:nth-child(1) span', 'Apps and platforms'],
+        ['.capability:nth-child(2) strong', 'Integrate'],
+        ['.capability:nth-child(2) span', 'APIs and systems'],
+        ['.capability:nth-child(3) strong', 'Automate'],
+        ['.capability:nth-child(3) span', 'Repetitive processes'],
+        ['.capability:nth-child(4) strong', 'Validate'],
+        ['.capability:nth-child(4) span', 'Quality and reliability'],
+        ['.transition-story__label', 'PRINCIPLE / 001'],
+        ['.transition-story__line--first', 'Complex problems.'],
+        ['.transition-story__line--second', 'Smarter systems.'],
+        ['#enfoque .eyebrow', 'Applied intelligence'],
+        ['#enfoque .lead', 'Before choosing tools, I understand the people, data, constraints, and expected behavior. That lets me build something useful, measurable, and ready for the real world.'],
+        ['.principle:nth-child(1) .principle__number', '01 · UNDERSTAND'],
+        ['.principle:nth-child(1) h3', 'Context before code'],
+        ['.principle:nth-child(1) p', 'Clear goals, users, risks, and success criteria from the start.'],
+        ['.principle:nth-child(2) .principle__number', '02 · BUILD'],
+        ['.principle:nth-child(2) h3', 'Simplicity with purpose'],
+        ['.principle:nth-child(2) p', 'Maintainable architectures and interfaces that reduce friction.'],
+        ['.principle:nth-child(3) .principle__number', '03 · CONNECT'],
+        ['.principle:nth-child(3) h3', 'Systems that work together'],
+        ['.principle:nth-child(3) p', 'APIs, automations, and data integrated into coherent workflows.'],
+        ['.principle:nth-child(4) .principle__number', '04 · VALIDATE'],
+        ['.principle:nth-child(4) h3', 'Quality built in'],
+        ['.principle:nth-child(4) p', 'Continuous testing and review so the solution truly works.'],
+        ['.ai-step:nth-child(1)', 'GOAL'],
+        ['.ai-step:nth-child(2)', 'CONTEXT'],
+        ['.ai-step:nth-child(3)', 'AGENT / LLM'],
+        ['.ai-step:nth-child(4)', 'IMPLEMENTATION'],
+        ['.ai-step:nth-child(5)', 'REVIEW'],
+        ['.ai-step:nth-child(6)', 'TESTING'],
+        ['.ai-step:nth-child(7)', 'VALIDATION'],
+        ['#trabajo .section-head .eyebrow', 'Selected work'],
+        ['#trabajo .section-head .heading', 'Products with purpose.'],
+        ['#trabajo .section-head .lead', 'A selection of platforms, integrations, and systems where product, engineering, and quality work as one discipline.'],
+        ['.aura-intro .project__index', '01 · Featured project'],
+        ['.aura-intro .project__role', 'Personal AI platform'],
+        ['.aura-intro__body > p', 'One interface. Multiple intelligence providers. AURA connects local models and cloud services within a controlled, extensible architecture.'],
+        ['.aura-state:nth-child(1) .aura-state__index', '01 / INTERFACE'],
+        ['.aura-state:nth-child(1) h4', 'A focused desktop experience.'],
+        ['.aura-state:nth-child(1) p', 'Built with React and Tauri to bring conversations, tools, and controls into one place.'],
+        ['.aura-state:nth-child(2) .aura-state__index', '02 / INTELLIGENCE'],
+        ['.aura-state:nth-child(2) h4', 'Local and cloud models.'],
+        ['.aura-state:nth-child(2) p', 'OpenAI, Codex, and Ollama operate behind a shared layer of providers and configurable routes.'],
+        ['.aura-state:nth-child(3) .aura-state__index', '03 / CONTROL'],
+        ['.aura-state:nth-child(3) h4', 'Permission before execution.'],
+        ['.aura-state:nth-child(3) p', 'Provider limits, controlled execution, and fallback routes keep every action supervised.'],
+        ['.aura-state:nth-child(4) .aura-state__index', '04 / QUALITY'],
+        ['.aura-state:nth-child(4) h4', 'Validated end to end.'],
+        ['.aura-state:nth-child(4) p', 'Unit tests, integration testing, linting, and build validation turn the idea into a reliable product.'],
+        ['.project-grid .project:nth-child(1) .project__index', '02 · Enterprise systems'],
+        ['.project-grid .project:nth-child(1) .project__role', 'Digital operations'],
+        ['.project-grid .project:nth-child(1) .project__content > p:nth-of-type(3)', 'Internal tools and integrations designed around daily work: sales, orders, customers, inventory, billing, and mobility connected to the enterprise system.'],
+        ['.project-grid .project:nth-child(1) .tag:last-child', 'Automation'],
+        ['.project-grid .project:nth-child(1) .project__result', 'Clearer processes on the surface and solid connections underneath.'],
+        ['.project-grid .project:nth-child(1) .project-link', 'Visit Rapyvet'],
+        ['.project-grid .project:nth-child(2) .project__index', '03 · Product development'],
+        ['.project-grid .project:nth-child(2) .project__role', 'Clinical management platform'],
+        ['.project-grid .project:nth-child(2) .project__content > p:nth-of-type(3)', 'Responsive web application for organizing patients, medical records, appointments, and clinical follow-ups without losing context between tasks.'],
+        ['.project-grid .project:nth-child(2) .tag:nth-child(3)', 'Responsive UX'],
+        ['.project-grid .project:nth-child(2) .project__result', 'Organized information · Clear workflows · An experience that adapts to every screen'],
+        ['.project-grid .project:nth-child(2) .project-link', 'Visit VetFlow'],
+        ['.quality-card .eyebrow', '04 · Quality engineering'],
+        ['.quality-card > div:first-child > p:not(.eyebrow)', 'Test automation across real user journeys: interface, payments, network traffic, system responses, and end-to-end validation.'],
+        ['.test-node:nth-child(1)', 'ACTION'],
+        ['.test-node:nth-child(2)', 'INTERFACE'],
+        ['.test-node:nth-child(3)', 'NETWORK'],
+        ['.test-node:nth-child(4)', 'RESPONSE'],
+        ['.test-node:nth-child(5)', 'VALIDATION'],
+        ['[aria-labelledby="proceso-titulo"] .eyebrow', 'How I work'],
+        ['#proceso-titulo', 'From uncertainty to a validated solution.'],
+        ['.process__step:nth-child(1) h3', 'Define'],
+        ['.process__step:nth-child(1) p', 'I align the goal, context, dependencies, and what project success means.'],
+        ['.process__step:nth-child(2) h3', 'Design'],
+        ['.process__step:nth-child(2) p', 'I turn the problem into clear workflows, technical decisions, and an easy-to-understand experience.'],
+        ['.process__step:nth-child(3) h3', 'Build'],
+        ['.process__step:nth-child(3) p', 'I implement in layers, connect systems, and use AI where it creates real value.'],
+        ['.process__step:nth-child(4) h3', 'Validate'],
+        ['.process__step:nth-child(4) p', 'I test, observe, correct, and document to deliver a reliable solution.'],
+        ['#experiencia .eyebrow', 'Experience'],
+        ['#experiencia .heading', 'Solve, build, and improve.'],
+        ['.timeline__item:nth-child(1) h3', 'Software Quality Engineer & IT Consultant'],
+        ['.timeline__item:nth-child(1) .timeline__company', 'Independent'],
+        ['.timeline__item:nth-child(1) .timeline__copy', 'Software development, quality assurance, automation, API integrations, AI-assisted engineering, and enterprise systems consulting.'],
+        ['.timeline__item:nth-child(2) h3', 'Apple Solutions Consultant'],
+        ['.timeline__item:nth-child(2) .timeline__copy', 'Technical consulting, diagnostics, needs analysis, team training, knowledge transfer, and continuous improvement.'],
+        ['#herramientas .eyebrow', 'Tools'],
+        ['#herramientas .heading', 'Technology chosen for what it solves.'],
+        ['.tool-group:nth-child(2) h3', 'Product'],
+        ['.tool-group:nth-child(3) h3', 'Applied AI'],
+        ['.tool-group:nth-child(3) p', 'OpenAI · Codex · ChatGPT · Ollama · Agents · Local models'],
+        ['.tool-group:nth-child(4) h3', 'Quality and business'],
+        ['#contacto .eyebrow', "Let's talk"],
+        ['#contacto .heading', 'Do you have a problem worth solving?'],
+        ['#contacto .lead', 'Let’s build something useful, clear, and reliable. I can help turn an operational or technical need into a solution that works.'],
+        ['#contacto .hero__actions .button--secondary', 'View GitHub'],
+        ['.footer p', '© 2026 Angel Araguz · Nuevo León, Mexico'],
+        ['.footer__links a:last-child', 'Back to top ↑']
+      ];
+
+      const englishHtml = [
+        ['.hero__copy .display', 'I build intelligent software<br><span class="accent">that works in the real world.</span>'],
+        ['.hero__copy .hero__actions .button--primary', 'Explore my work <span class="arrow" aria-hidden="true">→</span>'],
+        ['#enfoque .heading', 'AI as leverage.<br><span class="accent">Not decoration.</span>'],
+        ['.timeline__item:nth-child(1) .timeline__date', '2026 — PRESENT<br>MEXICO'],
+        ['#contacto .hero__actions .button--primary', 'Tell me about your project <span class="arrow" aria-hidden="true">→</span>']
+      ];
+
+      const englishAttributes = [
+        ['.brand', 'aria-label', 'Go to home'],
+        ['#nav-links', 'aria-label', 'Main navigation'],
+        ['.hero__meta', 'aria-label', 'Areas of expertise'],
+        ['.capability-bar', 'aria-label', 'Core capabilities'],
+        ['#transicion', 'aria-label', 'From complex problems to smarter systems'],
+        ['#ai-flow', 'aria-label', 'Artificial intelligence workflow'],
+        ['.aura-intro .tags', 'aria-label', 'Technologies used in AURA'],
+        ['#aura-story', 'aria-label', 'AURA project story'],
+        ['.aura-story__media img:nth-of-type(1)', 'alt', 'Conceptual AURA desktop interface with conversation and side controls'],
+        ['.aura-story__media img:nth-of-type(2)', 'alt', 'Conceptual AURA architecture connected to local and cloud services'],
+        ['.aura-story__media img:nth-of-type(3)', 'alt', 'Conceptual AURA dashboard with validation, metrics, and testing'],
+        ['.aura-story__media img:nth-of-type(4)', 'alt', 'Conceptual AURA dashboard with permissions and controlled execution'],
+        ['.aura-state:nth-child(1)', 'data-label', 'Interface'],
+        ['.aura-state:nth-child(2)', 'data-label', 'Intelligence'],
+        ['.aura-state:nth-child(3)', 'data-label', 'Control'],
+        ['.aura-state:nth-child(4)', 'data-label', 'Quality'],
+        ['.project-grid .project:nth-child(1) img', 'alt', 'Visualization of an enterprise system connecting sales, inventory, customers, and automation'],
+        ['.project-grid .project:nth-child(2) img', 'alt', 'Tablet with a conceptual interface for managing patients, appointments, and veterinary records'],
+        ['.test-flow', 'aria-label', 'Urban Routes validation workflow'],
+        ['.brand-lockup', 'alt', 'Angel Araguz logo']
+      ];
+
+      const spanishText = new Map();
+      const spanishHtml = new Map();
+      const spanishAttributes = new Map();
+      englishText.forEach(([selector]) => document.querySelectorAll(selector).forEach(element => spanishText.set(element, element.textContent)));
+      englishHtml.forEach(([selector]) => document.querySelectorAll(selector).forEach(element => spanishHtml.set(element, element.innerHTML)));
+      englishAttributes.forEach(([selector, attribute]) => document.querySelectorAll(selector).forEach(element => {
+        if (!spanishAttributes.has(element)) spanishAttributes.set(element, new Map());
+        spanishAttributes.get(element).set(attribute, element.getAttribute(attribute));
+      }));
+
+      const pageCopy = {
+        'es-MX': {
+          title: 'Angel Araguz — Ingeniería de software, IA aplicada y calidad',
+          description: 'Portafolio de Angel Araguz: ingeniería de software, IA aplicada, automatización, integraciones y calidad para resolver problemas reales.',
+          ogTitle: 'Angel Araguz — Software que resuelve problemas reales',
+          ogDescription: 'Ingeniería de software, IA aplicada, automatización y calidad, de la idea a una solución confiable.',
+          switchLabel: 'Cambiar idioma',
+          esLabel: 'Cambiar a español latino',
+          enLabel: 'Cambiar a inglés de Estados Unidos',
+          menuOpen: 'Abrir menú',
+          menuClose: 'Cerrar menú'
+        },
+        'en-US': {
+          title: 'Angel Araguz — Software Engineering, Applied AI, and Quality',
+          description: 'Angel Araguz portfolio: software engineering, applied AI, automation, integrations, and quality focused on solving real-world problems.',
+          ogTitle: 'Angel Araguz — Software that solves real-world problems',
+          ogDescription: 'Software engineering, applied AI, automation, and quality—from idea to reliable solution.',
+          switchLabel: 'Change language',
+          esLabel: 'Switch to Latin American Spanish',
+          enLabel: 'Switch to US English',
+          menuOpen: 'Open menu',
+          menuClose: 'Close menu'
+        }
+      };
+
+      const applyLanguage = locale => {
+        currentLocale = locale === 'en-US' ? 'en-US' : 'es-MX';
+        const isEnglish = currentLocale === 'en-US';
+        const page = pageCopy[currentLocale];
+        document.documentElement.lang = currentLocale;
+        document.title = page.title;
+        document.querySelector('meta[name="description"]').content = page.description;
+        document.querySelector('meta[property="og:title"]').content = page.ogTitle;
+        document.querySelector('meta[property="og:description"]').content = page.ogDescription;
+        document.querySelector('meta[property="og:locale"]').content = isEnglish ? 'en_US' : 'es_MX';
+
+        englishText.forEach(([selector, translation]) => document.querySelectorAll(selector).forEach(element => {
+          element.textContent = isEnglish ? translation : spanishText.get(element);
+        }));
+        englishHtml.forEach(([selector, translation]) => document.querySelectorAll(selector).forEach(element => {
+          element.innerHTML = isEnglish ? translation : spanishHtml.get(element);
+        }));
+        englishAttributes.forEach(([selector, attribute, translation]) => document.querySelectorAll(selector).forEach(element => {
+          const spanishValue = spanishAttributes.get(element)?.get(attribute);
+          if (isEnglish) element.setAttribute(attribute, translation);
+          else if (spanishValue === null) element.removeAttribute(attribute);
+          else element.setAttribute(attribute, spanishValue);
+        }));
+
+        languageSwitch.setAttribute('aria-label', page.switchLabel);
+        localeButtons[0].setAttribute('aria-label', page.esLabel);
+        localeButtons[1].setAttribute('aria-label', page.enLabel);
+        localeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.locale === currentLocale)));
+        menuToggle.setAttribute('aria-label', menuToggle.getAttribute('aria-expanded') === 'true' ? page.menuClose : page.menuOpen);
+        const activeAuraState = auraStates.find(state => state.classList.contains('is-active')) || auraStates[0];
+        if (auraBadge && activeAuraState) auraBadge.textContent = activeAuraState.dataset.label || '';
+        try { localStorage.setItem('angel-araguz-locale', currentLocale); } catch {}
+      };
+
+      let preferredLocale = 'es-MX';
+      try {
+        const savedLocale = localStorage.getItem('angel-araguz-locale');
+        preferredLocale = savedLocale === 'en-US' || savedLocale === 'es-MX' ? savedLocale : (navigator.language?.toLowerCase().startsWith('en') ? 'en-US' : 'es-MX');
+      } catch {
+        preferredLocale = navigator.language?.toLowerCase().startsWith('en') ? 'en-US' : 'es-MX';
+      }
+      localeButtons.forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.locale)));
 
       if (particleCanvas && !reduceMotion) {
         const particleContext = particleCanvas.getContext('2d', { alpha: true });
@@ -629,19 +871,20 @@
           scrollFrame = 0;
         });
       };
+      applyLanguage(preferredLocale);
       updateScrollMotion();
       window.addEventListener('scroll', requestScrollUpdate, { passive: true });
       window.addEventListener('resize', requestScrollUpdate, { passive: true });
       const closeMenu = () => {
         menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Abrir menú');
+        menuToggle.setAttribute('aria-label', pageCopy[currentLocale].menuOpen);
         navLinks.classList.remove('is-open');
         document.body.classList.remove('menu-open');
       };
       menuToggle.addEventListener('click', () => {
         const willOpen = menuToggle.getAttribute('aria-expanded') !== 'true';
         menuToggle.setAttribute('aria-expanded', String(willOpen));
-        menuToggle.setAttribute('aria-label', willOpen ? 'Cerrar menú' : 'Abrir menú');
+        menuToggle.setAttribute('aria-label', willOpen ? pageCopy[currentLocale].menuClose : pageCopy[currentLocale].menuOpen);
         navLinks.classList.toggle('is-open', willOpen);
         document.body.classList.toggle('menu-open', willOpen);
         if (willOpen) links[0]?.focus();
@@ -655,7 +898,7 @@
           return;
         }
         if (event.key === 'Tab') {
-          const focusable = [menuToggle, ...links];
+          const focusable = [...localeButtons, menuToggle, ...links];
           const first = focusable[0];
           const last = focusable[focusable.length - 1];
           if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
