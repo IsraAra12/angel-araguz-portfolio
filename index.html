@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07090c">
-  <title>Angel Araguz — Ingeniería de software, IA aplicada y calidad</title>
-  <meta name="description" content="Portafolio de Angel Araguz: ingeniería de software, IA aplicada, automatización, integraciones y calidad para resolver problemas reales.">
-  <meta property="og:title" content="Angel Araguz — Software que resuelve problemas reales">
-  <meta property="og:description" content="Ingeniería de software, IA aplicada, automatización y calidad, de la idea a una solución confiable.">
+  <title>Angel Araguz — Marketing, software y automatización con IA para empresas</title>
+  <meta name="description" content="Ayudo a empresas de Nuevo León y México a conseguir más oportunidades comerciales y reducir trabajo manual con marketing digital, software, Odoo, integraciones y automatización con IA.">
+  <meta property="og:title" content="Angel Araguz — Más oportunidades comerciales, menos trabajo manual">
+  <meta property="og:description" content="Growth, Technology y AI Automation: marketing, software, integraciones e IA aplicada a procesos concretos. Solicita un Diagnóstico Digital + IA.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
   <meta property="og:image" content="assets/images/hero-system.png">
@@ -73,7 +73,7 @@
     .hero__grid { position: relative; z-index: 1; display: block; padding-block: 68px 90px; }
     .hero__copy { max-width: 1080px; }
     .hero__name { margin: 0 0 14px; color: var(--muted); font-size: clamp(18px,2.2vw,27px); line-height: 1.2; font-weight: 600; letter-spacing: -.025em; }
-    .hero__copy .display { font-size: clamp(54px, 8.6vw, 116px); }
+    .hero__copy .display { font-size: clamp(46px, 7.4vw, 100px); }
     .hero__copy .lead { max-width: 720px; margin-top: 28px; }
     .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
     .button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .18s var(--ease), background .18s ease, border-color .18s ease; }
@@ -184,6 +184,56 @@
     .process__step span { color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; }
     .process__step h3 { margin: 42px 0 12px; font-size: 21px; letter-spacing: -.025em; }
     .process__step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .problems { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .problem-card { display: flex; flex-direction: column; min-height: 260px; padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.035); transition: border-color .18s ease, background .18s ease; }
+    .problem-card:hover { border-color: rgba(171,199,255,.32); background: rgba(255,255,255,.05); }
+    .problem-card__index { display: block; margin-bottom: 30px; color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; }
+    .problem-card h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.2; letter-spacing: -.025em; }
+    .problem-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .problem-card .problem-card__fix { display: flex; gap: 10px; margin-top: auto; padding-top: 22px; color: var(--text); font-weight: 650; }
+    .problem-card__fix::before { content: "→"; color: var(--blue-bright); }
+    .services { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .service-card { position: relative; overflow: hidden; display: flex; flex-direction: column; padding: clamp(28px,3.5vw,40px); border: 1px solid var(--line); border-radius: 28px; background: var(--surface); transition: border-color .18s ease; }
+    .service-card:hover { border-color: rgba(171,199,255,.26); }
+    .service-card::before { content: ""; position: absolute; width: 220px; aspect-ratio: 1; right: -80px; top: -80px; border: 1px solid rgba(171,199,255,.16); border-radius: 50%; pointer-events: none; }
+    .service-card::after { content: ""; position: absolute; right: 104px; top: 104px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue-bright); box-shadow: 0 0 14px var(--blue); pointer-events: none; }
+    .service-card__index { color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+    .service-card h3 { margin: 56px 0 8px; font-size: clamp(28px,3vw,38px); line-height: 1; letter-spacing: -.04em; }
+    .service-card__goal { margin: 0 0 26px; color: var(--blue-bright); font-size: 14px; font-weight: 750; }
+    .service-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .service-list li { padding: 12px 0; border-bottom: 1px solid var(--line); color: #c8ced8; font-size: 14px; line-height: 1.5; }
+    .services-note { max-width: 780px; margin: 28px 0 0; color: var(--muted-2); font-size: 13px; line-height: 1.7; }
+    .audience { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(48px,8vw,120px); align-items: start; }
+    .audience .lead { margin-top: 26px; font-size: 18px; }
+    .audience__label { display: block; margin-bottom: 18px; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .sectors { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .sector { padding: 12px 16px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.035); color: #c8ced8; font-size: 14px; font-weight: 650; }
+    .signal { margin-top: 26px; padding: 26px; border: 1px solid rgba(117,166,255,.3); border-radius: 20px; background: rgba(77,141,255,.08); }
+    .signal strong { display: block; margin-bottom: 12px; color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .signal p { margin: 0; font-size: 18px; line-height: 1.55; font-weight: 600; letter-spacing: -.015em; }
+    .diagnostic { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(36px,6vw,80px); align-items: start; padding: clamp(32px,5vw,66px); border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(135deg, #1d1d1f, #0c0e10); }
+    .diagnostic .lead { margin-top: 24px; font-size: 18px; }
+    .diagnostic__label { display: block; margin-top: 34px; color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .checklist { display: grid; gap: 12px; margin: 16px 0 0; padding: 0; list-style: none; }
+    .checklist li { display: flex; gap: 12px; font-size: 15px; line-height: 1.55; }
+    .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; }
+    .diag-steps { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .diag-steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .diag-steps span { color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; line-height: 1.9; }
+    .diag-steps h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -.02em; }
+    .diag-steps p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .goals { margin-top: clamp(56px,8vw,96px); }
+    .goals__list { display: grid; grid-template-columns: repeat(3,1fr); margin: 34px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .goals__list li { padding: 24px 24px 24px 0; border-bottom: 1px solid var(--line); color: #c8ced8; font-size: 15px; line-height: 1.55; }
+    .goals__list li b { font-weight: 500; }
+    .goals__list li span { display: block; margin-bottom: 12px; color: var(--blue-bright); font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .1em; }
+    .contact__hint { max-width: 620px; margin: 18px auto 0; color: var(--muted-2); font-size: 14px; line-height: 1.7; }
+    .contact-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; margin: 42px 0 0; padding: 0; list-style: none; }
+    .contact-list li { display: grid; gap: 6px; text-align: center; }
+    .contact-list span { color: var(--muted-2); font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .contact-list a, .contact-list strong { color: var(--muted); font-size: 14px; font-weight: 600; text-underline-offset: 5px; }
+    .contact-list a:hover { color: var(--text); }
+    .experience-layout .lead { margin-top: 24px; font-size: 17px; }
     .experience-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(48px,8vw,120px); }
     .timeline { border-top: 1px solid var(--line); }
     .timeline__item { display: grid; grid-template-columns: 135px 1fr; gap: 30px; padding-block: 34px; border-bottom: 1px solid var(--line); }
@@ -252,6 +302,8 @@
       .process__step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
       .process__step:nth-child(3) { padding-left: 0; }
       .toolkit { grid-template-columns: repeat(2,1fr); }
+      .problems, .goals__list { grid-template-columns: repeat(2,1fr); }
+      .services, .audience, .diagnostic { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
       :root { --nav: 64px; }
@@ -263,7 +315,12 @@
       .language-switch button { min-width: 31px; height: 28px; padding-inline: 7px; font-size: 9px; }
       .hero { min-height: 100svh; padding-top: var(--nav); }
       .hero__grid { padding-block: 52px 94px; }
-      .hero__copy .display { font-size: clamp(48px,14.3vw,68px); }
+      .hero__copy .display { font-size: clamp(38px,11vw,60px); }
+      .problems, .goals__list { grid-template-columns: 1fr; }
+      .problem-card { min-height: auto; }
+      .service-card, .diagnostic { border-radius: 22px; }
+      .goals__list li { padding-right: 0; }
+      .contact-list { flex-direction: column; }
       .hero__copy .lead { margin-top: 22px; font-size: 17px; }
       .hero__actions { display: grid; }
       .button { width: 100%; }
@@ -337,7 +394,7 @@
     <div class="container nav__inner">
       <a class="brand" href="#inicio" aria-label="Ir al inicio"><span class="brand__mark" aria-hidden="true">AA</span><span>Angel Araguz</span></a>
       <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
-        <a href="#trabajo">Proyectos</a><a href="#enfoque">Enfoque</a><a href="#experiencia">Experiencia</a><a href="#herramientas">Herramientas</a><a class="nav__cta" href="#contacto">Hablemos</a>
+        <a href="#servicios">Servicios</a><a href="#clientes">Para quién</a><a href="#trabajo">Proyectos</a><a href="#experiencia">Experiencia</a><a class="nav__cta" href="#diagnostico">Solicitar diagnóstico</a>
       </nav>
       <div class="nav__controls">
         <div class="language-switch" id="language-switch" role="group" aria-label="Cambiar idioma">
@@ -352,18 +409,18 @@
     <section class="hero" id="inicio">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow hero-enter" style="--delay: 80ms">Software · IA · Automatización · Calidad</p>
-          <p class="hero__name hero-enter" style="--delay: 150ms">Angel Araguz</p>
-          <h1 class="display hero-enter" style="--delay: 220ms">Construyo software inteligente<br><span class="accent">que sí funciona.</span></h1>
-          <p class="lead hero-enter" style="--delay: 300ms">Ingeniería de software, IA aplicada, automatización e ingeniería de calidad enfocadas en resolver problemas del mundo real.</p>
-          <div class="hero__actions hero-enter" style="--delay: 380ms"><a class="button button--primary" href="#trabajo">Explorar mi trabajo <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="mailto:angelauriazul25@gmail.com">Hablemos</a></div>
-          <div class="hero__meta hero-enter" style="--delay: 460ms" aria-label="Áreas de especialidad"><span>Ingeniería de software</span><span>IA aplicada</span><span>Automatización</span><span>Ingeniería de calidad</span></div>
+          <p class="eyebrow hero-enter" style="--delay: 80ms">Growth · Technology · AI Automation</p>
+          <p class="hero__name hero-enter" style="--delay: 150ms" data-en="Angel Araguz · Marketing, software, and AI for businesses">Angel Araguz · Marketing, software e IA para empresas</p>
+          <h1 class="display hero-enter" style="--delay: 220ms">Más oportunidades comerciales.<br><span class="accent">Menos trabajo manual.</span></h1>
+          <p class="lead hero-enter" style="--delay: 300ms">Ayudo a empresas a conseguir y atender mejor a sus prospectos, mejorar su presencia digital y reducir tareas repetitivas con marketing, software, integraciones e IA aplicada a procesos concretos.</p>
+          <div class="hero__actions hero-enter" style="--delay: 380ms"><a class="button button--primary" href="#diagnostico">Solicitar un diagnóstico <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="#servicios">Ver servicios</a></div>
+          <div class="hero__meta hero-enter" style="--delay: 460ms" aria-label="Áreas de servicio"><span>Marketing digital</span><span>Software y Odoo</span><span>Automatización</span><span>IA aplicada</span></div>
         </div>
       </div>
       <a class="hero__scroll hero-enter" style="--delay: 560ms" href="#transicion">Desliza para explorar</a>
     </section>
     <div class="capability-bar" aria-label="Capacidades principales">
-      <div class="container capability-bar__inner"><div class="capability"><strong>Construir</strong><span>Apps y plataformas</span></div><div class="capability"><strong>Integrar</strong><span>APIs y sistemas</span></div><div class="capability"><strong>Automatizar</strong><span>Procesos repetitivos</span></div><div class="capability"><strong>Validar</strong><span>Calidad y confiabilidad</span></div></div>
+      <div class="container capability-bar__inner"><div class="capability"><strong>Atraer</strong><span>Marketing y captación</span></div><div class="capability"><strong>Ordenar</strong><span>Web, software y Odoo</span></div><div class="capability"><strong>Automatizar</strong><span>Flujos, CRM e IA</span></div><div class="capability"><strong>Validar</strong><span>Pruebas y medición</span></div></div>
     </div>
     <section class="transition-story" id="transicion" aria-label="De problemas complejos a sistemas más inteligentes">
       <div class="transition-story__sticky">
@@ -373,6 +430,73 @@
           <h2 class="transition-story__line transition-story__line--second">Sistemas más inteligentes.</h2>
         </div>
         <div class="transition-story__progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+    <section class="section" id="problemas" aria-labelledby="problemas-titulo">
+      <div class="container">
+        <header class="section-head reveal"><div><p class="eyebrow" data-en="Sound familiar?">¿Te suena familiar?</p><h2 class="heading" id="problemas-titulo" data-en="Familiar problems.<br><span class='accent'>Concrete solutions.</span>">Problemas reconocibles.<br><span class="accent">Soluciones concretas.</span></h2></div><p class="lead" data-en="The most common issues in companies that already sell but still run on manual work.">Los problemas más comunes en empresas que ya venden, pero todavía operan de forma manual.</p></header>
+        <div class="problems">
+          <article class="problem-card reveal"><span class="problem-card__index" data-en="01 · FOLLOW-UP">01 · SEGUIMIENTO</span><h3 data-en="Leads that slip away">Prospectos que se pierden</h3><p data-en="They arrive through social media or WhatsApp and no one follows up in time.">Llegan por redes o WhatsApp y nadie les da seguimiento a tiempo.</p><p class="problem-card__fix" data-en="CRM capture, assignment, and reminders.">Registro en CRM, asignación y recordatorios.</p></article>
+          <article class="problem-card reveal"><span class="problem-card__index" data-en="02 · DATA">02 · INFORMACIÓN</span><h3 data-en="Data scattered across spreadsheets">Datos repartidos en hojas de cálculo</h3><p data-en="Sales and operations live in separate files, and no one has the latest version.">Ventas y operación viven en archivos distintos y nadie tiene la versión correcta.</p><p class="problem-card__fix" data-en="Centralized information in Odoo or a CRM.">Información centralizada en Odoo o en un CRM.</p></article>
+          <article class="problem-card reveal"><span class="problem-card__index" data-en="03 · TIME">03 · TIEMPO</span><h3 data-en="Repetitive tasks">Tareas repetitivas</h3><p data-en="Data entry, reports, and replies that eat up hours every week.">Capturas, reportes y respuestas que consumen horas cada semana.</p><p class="problem-card__fix" data-en="Automated workflows for administrative work.">Flujos automatizados para tareas administrativas.</p></article>
+          <article class="problem-card reveal"><span class="problem-card__index" data-en="04 · SYSTEMS">04 · SISTEMAS</span><h3 data-en="Tools that don’t talk to each other">Herramientas que no se hablan</h3><p data-en="Each system works on its own, and the same data gets entered twice.">Cada sistema funciona por separado y la misma información se captura dos veces.</p><p class="problem-card__fix" data-en="API integrations between your tools.">Integraciones mediante APIs entre tus herramientas.</p></article>
+          <article class="problem-card reveal"><span class="problem-card__index" data-en="05 · PRESENCE">05 · PRESENCIA</span><h3 data-en="Digital presence without measurement">Presencia digital sin medición</h3><p data-en="There’s a website or active social media, but no clarity on what generates leads.">Hay sitio o redes activas, pero no se sabe qué genera contactos.</p><p class="problem-card__fix" data-en="Landing pages, forms, SEO, and analytics.">Landing pages, formularios, SEO y analítica.</p></article>
+          <article class="problem-card reveal"><span class="problem-card__index" data-en="06 · VISIBILITY">06 · VISIBILIDAD</span><h3 data-en="Decisions without clear data">Decisiones sin datos claros</h3><p data-en="Knowing how sales or operations are doing means requesting and merging reports.">Saber cómo van las ventas o la operación requiere pedir y juntar reportes.</p><p class="problem-card__fix" data-en="Dashboards and reports built for leadership.">Paneles y reportes útiles para dirección.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border" id="servicios" aria-labelledby="servicios-titulo">
+      <div class="container">
+        <header class="section-head reveal"><div><p class="eyebrow" data-en="Services">Servicios</p><h2 class="heading" id="servicios-titulo" data-en="Three lines.<br><span class='accent'>One strategy.</span>">Tres líneas.<br><span class="accent">Una sola estrategia.</span></h2></div><p class="lead" data-en="Attract the lead, capture it, and follow up without duplicate data entry. The difference shows when all three areas solve the same business problem.">Atraer al prospecto, registrarlo y darle seguimiento sin capturas duplicadas. La diferencia aparece cuando las tres áreas resuelven el mismo problema de negocio.</p></header>
+        <div class="services">
+          <article class="service-card reveal"><span class="service-card__index" data-en="Orbit 01">Órbita 01</span><h3>Growth</h3><p class="service-card__goal" data-en="Generate demand">Generar demanda</p><ul class="service-list"><li data-en="Digital marketing strategy">Estrategia de marketing digital</li><li data-en="Content and social media management">Contenido y gestión de redes sociales</li><li data-en="Branding and sales materials">Branding y materiales comerciales</li><li data-en="Landing pages, SEO, and digital campaigns">Landing pages, SEO y campañas digitales</li><li data-en="Lead capture forms and analytics">Formularios, captación de prospectos y analítica</li><li data-en="The journey from first contact to quote request">Recorrido del primer contacto a la solicitud de cotización</li></ul></article>
+          <article class="service-card reveal"><span class="service-card__index" data-en="Orbit 02">Órbita 02</span><h3>Technology</h3><p class="service-card__goal" data-en="Organize operations">Ordenar la operación</p><ul class="service-list"><li data-en="Websites and e-commerce">Sitios web y comercio electrónico</li><li data-en="Internal apps and systems">Aplicaciones y sistemas internos</li><li data-en="CRM and Odoo process implementation">Implementación de CRM y procesos en Odoo</li><li data-en="API integrations">Integraciones mediante APIs</li><li data-en="Dashboards and reports">Paneles de información y reportes</li><li data-en="Custom software when the process justifies it">Software a medida cuando el proceso lo justifique</li></ul></article>
+          <article class="service-card reveal"><span class="service-card__index" data-en="Orbit 03">Órbita 03</span><h3>AI &amp; Automation</h3><p class="service-card__goal" data-en="Reduce manual work">Reducir trabajo manual</p><ul class="service-list"><li data-en="Lead capture and follow-up in a CRM">Registro y seguimiento de prospectos en CRM</li><li data-en="Workflows across forms, email, WhatsApp, and internal systems">Flujos entre formularios, correo, WhatsApp y sistemas internos</li><li data-en="Request classification and routing">Clasificación y distribución de solicitudes</li><li data-en="Administrative task and report automation">Automatización de tareas administrativas y reportes</li><li data-en="Internal assistants for defined use cases">Asistentes internos para casos de uso definidos</li><li data-en="AI models where they deliver a verifiable improvement">Modelos de IA donde aporten una mejora verificable</li></ul></article>
+        </div>
+        <p class="services-note reveal" data-en="Every implementation is scoped to your processes, platforms, and available permissions. I also offer consulting on digital transformation, technology strategy, and AI adoption.">Cada implementación se define según tus procesos, plataformas y permisos disponibles. También ofrezco consultoría en transformación digital, estrategia tecnológica y adopción de IA.</p>
+      </div>
+    </section>
+    <section class="section section-border" id="clientes" aria-labelledby="clientes-titulo">
+      <div class="container audience">
+        <div class="reveal"><p class="eyebrow" data-en="Who it’s for">Para quién</p><h2 class="heading" id="clientes-titulo" data-en="For companies that already sell<br><span class='accent'>but still run on manual work.</span>">Para empresas que ya venden,<br><span class="accent">pero siguen operando a mano.</span></h2><p class="lead" data-en="I work with companies of 10 to 100 people that need to improve lead capture and follow-up, organize their operations, or connect tools that currently work in isolation. I speak directly with owners, directors, and sales or operations managers.">Trabajo con empresas de 10 a 100 personas que necesitan mejorar la captación y el seguimiento de clientes, ordenar su operación o conectar herramientas que hoy funcionan por separado. Hablo directamente con dueños, directores y gerentes de ventas u operación.</p></div>
+        <div class="reveal">
+          <span class="audience__label" data-en="Industries">Sectores</span>
+          <ul class="sectors"><li class="sector" data-en="Distribution and B2B">Distribución y comercio B2B</li><li class="sector" data-en="Veterinary and animal care">Veterinarias y sector animal</li><li class="sector" data-en="Family businesses">Empresas familiares</li><li class="sector" data-en="Professional services">Servicios profesionales</li><li class="sector" data-en="Restaurants">Restaurantes</li><li class="sector" data-en="Real estate">Inmobiliarias</li><li class="sector" data-en="Construction">Constructoras</li><li class="sector" data-en="Automotive">Automotriz</li></ul>
+          <div class="signal"><strong data-en="Opportunity signal">Señal de oportunidad</strong><p data-en="Your operation depends on Excel, WhatsApp, and manual follow-up.">Tu operación depende de Excel, WhatsApp y seguimiento manual.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border" id="diagnostico" aria-labelledby="diagnostico-titulo">
+      <div class="container">
+        <article class="diagnostic reveal">
+          <div>
+            <p class="eyebrow" data-en="First step">Primer paso</p>
+            <h2 class="heading" id="diagnostico-titulo" data-en="Digital + AI<br><span class='accent'>Assessment</span>">Diagnóstico<br><span class="accent">Digital + IA</span></h2>
+            <p class="lead" data-en="I review how your company attracts clients, follows up with leads, uses its tools, and which tasks are still done by hand.">Reviso cómo tu empresa atrae clientes, da seguimiento a sus prospectos, utiliza sus herramientas y qué tareas se siguen haciendo a mano.</p>
+            <span class="diagnostic__label" data-en="What you get">Qué recibes</span>
+            <ul class="checklist"><li data-en="A prioritized list of improvement opportunities.">Una lista priorizada de oportunidades de mejora.</li><li data-en="The potential impact and difficulty of each one.">El posible impacto y la dificultad de cada una.</li><li data-en="A suggested implementation roadmap.">Una ruta de implementación sugerida.</li></ul>
+            <div class="hero__actions"><a class="button button--primary" data-mail="diagnostic" href="mailto:angelauriazul25@gmail.com?subject=Solicitud%20de%20Diagn%C3%B3stico%20Digital%20%2B%20IA" data-en="Request an assessment <span class='arrow' aria-hidden='true'>→</span>">Solicitar un diagnóstico <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="#contacto" data-en="Let’s talk about your operation">Conversemos sobre tu operación</a></div>
+          </div>
+          <ol class="diag-steps">
+            <li><span>01</span><div><h3 data-en="Initial conversation">Conversación inicial</h3><p data-en="30 minutes to understand your business, your team, and your priorities.">30 minutos para entender tu negocio, tu equipo y tus prioridades.</p></div></li>
+            <li><span>02</span><div><h3 data-en="Review">Revisión</h3><p data-en="Sales processes, current tools, and manual tasks.">Procesos comerciales, herramientas actuales y tareas manuales.</p></div></li>
+            <li><span>03</span><div><h3 data-en="Prioritized opportunities">Oportunidades priorizadas</h3><p data-en="Ranked by potential impact, difficulty, and urgency.">Ordenadas por impacto posible, dificultad y urgencia.</p></div></li>
+            <li><span>04</span><div><h3 data-en="Proposal">Propuesta</h3><p data-en="Defined scope and how the result will be measured.">Alcance definido y forma de medir el resultado.</p></div></li>
+          </ol>
+        </article>
+        <div class="goals reveal">
+          <p class="eyebrow" data-en="What every project aims for">Lo que busca cada proyecto</p>
+          <h3 class="subheading" data-en="Clear goals, defined in every proposal.">Objetivos claros, definidos en cada propuesta.</h3>
+          <ul class="goals__list">
+            <li><span>01</span><b data-en="More sales opportunities, with follow-up your team can manage.">Más oportunidades comerciales, con un seguimiento que tu equipo pueda sostener.</b></li>
+            <li><span>02</span><b data-en="Fewer leads lost between social media, WhatsApp, and sales reps.">Menos prospectos perdidos entre redes, WhatsApp y vendedores.</b></li>
+            <li><span>03</span><b data-en="Less time spent on repetitive tasks.">Menos tiempo dedicado a tareas repetitivas.</b></li>
+            <li><span>04</span><b data-en="Sales and operations data in one place.">Información comercial y operativa centralizada.</b></li>
+            <li><span>05</span><b data-en="Connected tools with no duplicate data entry.">Herramientas conectadas, sin capturas duplicadas.</b></li>
+            <li><span>06</span><b data-en="Useful reports to see how sales and operations are doing.">Reportes útiles para ver cómo van las ventas y la operación.</b></li>
+          </ul>
+          <p class="services-note" data-en="Each proposal defines what will be implemented and how the result will be measured.">Cada propuesta define qué se implementará y cómo se medirá el resultado.</p>
+        </div>
       </div>
     </section>
     <section class="section" id="enfoque">
@@ -397,10 +521,10 @@
     </section>
     <section class="section section-border" id="trabajo">
       <div class="container">
-        <header class="section-head reveal"><div><p class="eyebrow">Trabajo seleccionado</p><h2 class="heading">Productos con propósito.</h2></div><p class="lead">Una selección de plataformas, integraciones y sistemas donde producto, ingeniería y calidad trabajan como una sola disciplina.</p></header>
+        <header class="section-head reveal"><div><p class="eyebrow">Experiencia que respalda</p><h2 class="heading">Productos con propósito.</h2></div><p class="lead">Proyectos reales y experimentales que respaldan cada línea de servicio: digitalización, integraciones, automatización e IA aplicada.</p></header>
         <article class="aura-intro reveal">
-          <div class="aura-intro__title"><p class="project__index">01 · Proyecto destacado</p><h3>AURA</h3><p class="project__role">Plataforma personal de IA</p></div>
-          <div class="aura-intro__body"><p>Una interfaz. Múltiples proveedores de inteligencia. AURA conecta modelos locales y servicios en la nube dentro de una arquitectura controlada y extensible.</p><div class="tags" aria-label="Tecnologías utilizadas en AURA"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tauri</span><span class="tag">FastAPI</span><span class="tag">OpenAI</span><span class="tag">Codex</span><span class="tag">Ollama</span></div></div>
+          <div class="aura-intro__title"><p class="project__index">01 · Proyecto experimental</p><h3>AURA</h3><p class="project__role">Laboratorio de IA aplicada · AURA y AURA4</p></div>
+          <div class="aura-intro__body"><p>Trabajo experimental con asistentes de IA, integración de modelos locales y en la nube, herramientas, permisos de ejecución y pruebas. Es la base técnica de la línea de IA, no un producto comercial.</p><div class="tags" aria-label="Tecnologías utilizadas en AURA"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tauri</span><span class="tag">FastAPI</span><span class="tag">OpenAI</span><span class="tag">Codex</span><span class="tag">Ollama</span></div></div>
         </article>
         <div class="aura-story" id="aura-story" aria-label="Historia del proyecto AURA">
           <div class="aura-story__sticky">
@@ -415,13 +539,13 @@
               <article class="aura-state is-active" data-label="Interfaz"><span class="aura-state__index">01 / INTERFAZ</span><h4>Una experiencia de escritorio enfocada.</h4><p>Construida con React y Tauri para reunir conversación, herramientas y controles en un solo espacio.</p></article>
               <article class="aura-state" data-label="Inteligencia"><span class="aura-state__index">02 / INTELIGENCIA</span><h4>Modelos locales y en la nube.</h4><p>OpenAI, Codex y Ollama funcionan detrás de una capa común de proveedores y rutas configurables.</p></article>
               <article class="aura-state" data-label="Control"><span class="aura-state__index">03 / CONTROL</span><h4>Permisos antes de ejecutar.</h4><p>Límites de proveedor, ejecución controlada y rutas de respaldo mantienen las acciones bajo supervisión.</p></article>
-              <article class="aura-state" data-label="Calidad"><span class="aura-state__index">04 / CALIDAD</span><h4>Validada de punta a punta.</h4><p>Pruebas unitarias, integración, linting y validación de compilación convierten la idea en producto confiable.</p></article>
+              <article class="aura-state" data-label="Calidad"><span class="aura-state__index">04 / CALIDAD</span><h4>Pruebas en cada iteración.</h4><p>Pruebas unitarias, de integración, linting y validación de compilación forman parte de cada experimento.</p></article>
             </div>
             <div class="aura-story__dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span></div>
           </div>
         </div>
         <div class="project-grid">
-          <article class="project reveal"><div class="project__media"><img src="assets/images/rapyvet-system.webp" width="1536" height="1024" alt="Visualización de un sistema empresarial conectado para ventas, inventario, clientes y automatización" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">02 · Sistemas empresariales</p><h3>Rapyvet</h3><p class="project__role">Digitalización y operaciones</p><p>Herramientas internas e integraciones diseñadas alrededor del trabajo diario: ventas, pedidos, clientes, inventario, facturación y movilidad conectados con el sistema empresarial.</p><div class="tags"><span class="tag">Odoo Enterprise</span><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">Automatización</span></div><p class="project__result">Procesos más claros en la superficie y conexiones sólidas por debajo.</p><a class="project-link" href="https://rapyvet.vercel.app" target="_blank" rel="noopener noreferrer">Visitar Rapyvet</a></div></article>
+          <article class="project reveal"><div class="project__media"><img src="assets/images/rapyvet-system.webp" width="1536" height="1024" alt="Visualización de un sistema empresarial conectado para ventas, inventario, clientes y automatización" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">02 · Sistemas empresariales</p><h3>Rapyvet</h3><p class="project__role">Digitalización y operaciones</p><p>Soluciones para procesos comerciales y operativos: integraciones con Odoo, herramientas de captura de pedidos, aplicaciones web y automatización alrededor del trabajo diario.</p><div class="tags"><span class="tag">Odoo Enterprise</span><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">Automatización</span></div><p class="project__result">Experiencia práctica en digitalización empresarial.</p><a class="project-link" href="https://rapyvet.vercel.app" target="_blank" rel="noopener noreferrer">Visitar Rapyvet</a></div></article>
           <article class="project reveal"><div class="project__media"><img src="assets/images/vetflow-clinical.webp" width="1536" height="1024" alt="Tableta con una interfaz conceptual para administrar pacientes, citas y expedientes veterinarios" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">03 · Desarrollo de producto</p><h3>VetFlow</h3><p class="project__role">Plataforma de gestión clínica</p><p>Aplicación web responsiva para organizar pacientes, expedientes, citas y seguimientos clínicos sin perder contexto entre tareas.</p><div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">UX responsiva</span><span class="tag">Vercel</span></div><p class="project__result">Información organizada · Flujos claros · Experiencia adaptable a cada pantalla</p><a class="project-link" href="https://vet-flow-psi.vercel.app" target="_blank" rel="noopener noreferrer">Visitar VetFlow</a></div></article>
         </div>
         <article class="quality-card reveal">
@@ -438,9 +562,9 @@
     </section>
     <section class="section section-border" id="experiencia">
       <div class="container experience-layout">
-        <div class="reveal"><p class="eyebrow">Experiencia</p><h2 class="heading">Resolver, construir y mejorar.</h2></div>
+        <div class="reveal"><p class="eyebrow">Quién está detrás</p><h2 class="heading">Resolver, construir y mejorar.</h2><p class="lead" data-en="I’m Angel Araguz. I handle every project directly, from the assessment to implementation, testing, and support.">Soy Angel Araguz. Atiendo cada proyecto de forma directa: del diagnóstico a la implementación, las pruebas y el soporte.</p></div>
         <div class="timeline">
-          <article class="timeline__item reveal"><div class="timeline__date">2026 — HOY<br>MÉXICO</div><div><h3>Ingeniero de calidad de software y consultor de TI</h3><p class="timeline__company">Independiente</p><p class="timeline__copy">Desarrollo de software, aseguramiento de calidad, automatización, integraciones con APIs, ingeniería asistida por IA y consultoría de sistemas empresariales.</p></div></article>
+          <article class="timeline__item reveal"><div class="timeline__date">2026 — HOY<br>MÉXICO</div><div><h3>Consultor de tecnología, automatización e IA aplicada</h3><p class="timeline__company">Independiente</p><p class="timeline__copy">Crecimiento digital, desarrollo de software, integraciones con APIs y Odoo, automatización de procesos, IA aplicada y aseguramiento de calidad para empresas.</p></div></article>
           <article class="timeline__item reveal"><div class="timeline__date">2021 — 2022<br>MONTERREY</div><div><h3>Consultor de Soluciones Apple</h3><p class="timeline__company">Apple</p><p class="timeline__copy">Consultoría técnica, diagnóstico, análisis de necesidades, capacitación de equipos, transferencia de conocimiento y mejora continua.</p></div></article>
         </div>
       </div>
@@ -449,7 +573,8 @@
       <div class="container"><div class="reveal"><p class="eyebrow">Herramientas</p><h2 class="heading">Tecnología elegida por lo que resuelve.</h2></div><div class="toolkit"><article class="tool-group reveal"><h3>Software</h3><p>Python · TypeScript · JavaScript · SQL · HTML · CSS</p></article><article class="tool-group reveal"><h3>Producto</h3><p>React · FastAPI · Tauri · Vite · REST APIs · Vercel</p></article><article class="tool-group reveal"><h3>IA aplicada</h3><p>OpenAI · Codex · ChatGPT · Ollama · Agentes · Modelos locales</p></article><article class="tool-group reveal"><h3>Calidad y negocio</h3><p>Pytest · Selenium · Vitest · Postman · Odoo · GitHub · Jira</p></article></div></div>
     </section>
     <section class="contact section-border" id="contacto">
-      <div class="container reveal"><img class="brand-lockup" src="assets/images/angel-araguz-logo.webp" width="1024" height="1024" alt="Logotipo de Angel Araguz" loading="lazy" decoding="async"><p class="eyebrow">Hablemos</p><h2 class="heading">¿Tienes un problema que vale la pena resolver?</h2><p class="lead">Construyamos algo útil, claro y confiable. Puedo ayudarte a convertir una necesidad operativa o técnica en una solución que funcione.</p><div class="hero__actions"><a class="button button--primary" href="mailto:angelauriazul25@gmail.com">Cuéntame sobre tu proyecto <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="https://github.com/IsraAra12" target="_blank" rel="noopener noreferrer">Ver GitHub</a></div><a class="contact__email" href="mailto:angelauriazul25@gmail.com">angelauriazul25@gmail.com</a></div>
+      <div class="container reveal"><img class="brand-lockup" src="assets/images/angel-araguz-logo.webp" width="1024" height="1024" alt="Logotipo de Angel Araguz" loading="lazy" decoding="async"><p class="eyebrow">Contacto</p><h2 class="heading">Conversemos sobre tu operación.</h2><p class="lead">Solicita un Diagnóstico Digital + IA y revisemos juntos qué conviene mejorar primero en tu empresa.</p><p class="contact__hint" data-en="To prepare the conversation, tell me your industry, the size of your team, and which process takes up the most time today.">Para preparar la conversación, cuéntame tu giro, el tamaño de tu equipo y qué proceso te quita más tiempo hoy.</p><div class="hero__actions"><a class="button button--primary" data-mail="diagnostic" href="mailto:angelauriazul25@gmail.com?subject=Solicitud%20de%20Diagn%C3%B3stico%20Digital%20%2B%20IA">Solicitar un diagnóstico <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="https://linkedin.com/in/angelaraguzgzz" target="_blank" rel="noopener noreferrer">Escríbeme por LinkedIn</a></div>
+        <ul class="contact-list"><li><span data-en="Email">Correo</span><a href="mailto:angelauriazul25@gmail.com">angelauriazul25@gmail.com</a></li><li><span>LinkedIn</span><a href="https://linkedin.com/in/angelaraguzgzz" target="_blank" rel="noopener noreferrer">in/angelaraguzgzz</a></li><li><span>GitHub</span><a href="https://github.com/IsraAra12" target="_blank" rel="noopener noreferrer">IsraAra12</a></li><li><span data-en="Location">Ubicación</span><strong data-en="Nuevo León, Mexico">Nuevo León, México</strong></li></ul></div>
     </section>
   </main>
   <footer class="footer"><div class="container footer__inner"><p>© 2026 Angel Araguz · Nuevo León, México</p><div class="footer__links"><a href="https://linkedin.com/in/angelaraguzgzz" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/IsraAra12" target="_blank" rel="noopener noreferrer">GitHub</a><a href="#inicio">Volver arriba ↑</a></div></div></footer>
@@ -481,27 +606,26 @@
 
       const englishText = [
         ['.skip-link', 'Skip to content'],
-        ['.nav__links a:nth-child(1)', 'Projects'],
-        ['.nav__links a:nth-child(2)', 'Approach'],
-        ['.nav__links a:nth-child(3)', 'Experience'],
-        ['.nav__links a:nth-child(4)', 'Tools'],
-        ['.nav__links a:nth-child(5)', "Let's talk"],
-        ['.hero__copy > .eyebrow', 'Software · AI · Automation · Quality'],
-        ['.hero__copy > .lead', 'Software engineering, applied AI, automation, and quality engineering focused on solving real-world problems.'],
-        ['.hero__copy .hero__actions .button--secondary', "Let's talk"],
-        ['.hero__meta span:nth-child(1)', 'Software engineering'],
-        ['.hero__meta span:nth-child(2)', 'Applied AI'],
+        ['.nav__links a:nth-child(1)', 'Services'],
+        ['.nav__links a:nth-child(2)', 'Who it’s for'],
+        ['.nav__links a:nth-child(3)', 'Projects'],
+        ['.nav__links a:nth-child(4)', 'Experience'],
+        ['.nav__links a:nth-child(5)', 'Get an assessment'],
+        ['.hero__copy > .lead', 'I help companies attract and serve their leads better, strengthen their digital presence, and reduce repetitive work with marketing, software, integrations, and AI applied to concrete processes.'],
+        ['.hero__copy .hero__actions .button--secondary', 'View services'],
+        ['.hero__meta span:nth-child(1)', 'Digital marketing'],
+        ['.hero__meta span:nth-child(2)', 'Software & Odoo'],
         ['.hero__meta span:nth-child(3)', 'Automation'],
-        ['.hero__meta span:nth-child(4)', 'Quality engineering'],
+        ['.hero__meta span:nth-child(4)', 'Applied AI'],
         ['.hero__scroll', 'Scroll to explore'],
-        ['.capability:nth-child(1) strong', 'Build'],
-        ['.capability:nth-child(1) span', 'Apps and platforms'],
-        ['.capability:nth-child(2) strong', 'Integrate'],
-        ['.capability:nth-child(2) span', 'APIs and systems'],
+        ['.capability:nth-child(1) strong', 'Attract'],
+        ['.capability:nth-child(1) span', 'Marketing and lead capture'],
+        ['.capability:nth-child(2) strong', 'Organize'],
+        ['.capability:nth-child(2) span', 'Web, software, and Odoo'],
         ['.capability:nth-child(3) strong', 'Automate'],
-        ['.capability:nth-child(3) span', 'Repetitive processes'],
+        ['.capability:nth-child(3) span', 'Workflows, CRM, and AI'],
         ['.capability:nth-child(4) strong', 'Validate'],
-        ['.capability:nth-child(4) span', 'Quality and reliability'],
+        ['.capability:nth-child(4) span', 'Testing and measurement'],
         ['.transition-story__label', 'PRINCIPLE / 001'],
         ['.transition-story__line--first', 'Complex problems.'],
         ['.transition-story__line--second', 'Smarter systems.'],
@@ -526,12 +650,12 @@
         ['.ai-step:nth-child(5)', 'REVIEW'],
         ['.ai-step:nth-child(6)', 'TESTING'],
         ['.ai-step:nth-child(7)', 'VALIDATION'],
-        ['#trabajo .section-head .eyebrow', 'Selected work'],
+        ['#trabajo .section-head .eyebrow', 'Backed by experience'],
         ['#trabajo .section-head .heading', 'Products with purpose.'],
-        ['#trabajo .section-head .lead', 'A selection of platforms, integrations, and systems where product, engineering, and quality work as one discipline.'],
-        ['.aura-intro .project__index', '01 · Featured project'],
-        ['.aura-intro .project__role', 'Personal AI platform'],
-        ['.aura-intro__body > p', 'One interface. Multiple intelligence providers. AURA connects local models and cloud services within a controlled, extensible architecture.'],
+        ['#trabajo .section-head .lead', 'Real and experimental projects that back each service line: digitalization, integrations, automation, and applied AI.'],
+        ['.aura-intro .project__index', '01 · Experimental project'],
+        ['.aura-intro .project__role', 'Applied AI lab · AURA and AURA4'],
+        ['.aura-intro__body > p', 'Experimental work with AI assistants, local and cloud model integration, tools, execution permissions, and testing. It is the technical foundation of the AI service line, not a commercial product.'],
         ['.aura-state:nth-child(1) .aura-state__index', '01 / INTERFACE'],
         ['.aura-state:nth-child(1) h4', 'A focused desktop experience.'],
         ['.aura-state:nth-child(1) p', 'Built with React and Tauri to bring conversations, tools, and controls into one place.'],
@@ -542,13 +666,13 @@
         ['.aura-state:nth-child(3) h4', 'Permission before execution.'],
         ['.aura-state:nth-child(3) p', 'Provider limits, controlled execution, and fallback routes keep every action supervised.'],
         ['.aura-state:nth-child(4) .aura-state__index', '04 / QUALITY'],
-        ['.aura-state:nth-child(4) h4', 'Validated end to end.'],
-        ['.aura-state:nth-child(4) p', 'Unit tests, integration testing, linting, and build validation turn the idea into a reliable product.'],
+        ['.aura-state:nth-child(4) h4', 'Testing in every iteration.'],
+        ['.aura-state:nth-child(4) p', 'Unit tests, integration testing, linting, and build validation are part of every experiment.'],
         ['.project-grid .project:nth-child(1) .project__index', '02 · Enterprise systems'],
         ['.project-grid .project:nth-child(1) .project__role', 'Digital operations'],
-        ['.project-grid .project:nth-child(1) .project__content > p:nth-of-type(3)', 'Internal tools and integrations designed around daily work: sales, orders, customers, inventory, billing, and mobility connected to the enterprise system.'],
+        ['.project-grid .project:nth-child(1) .project__content > p:nth-of-type(3)', 'Solutions for sales and operational processes: Odoo integrations, order capture tools, web applications, and automation built around daily work.'],
         ['.project-grid .project:nth-child(1) .tag:last-child', 'Automation'],
-        ['.project-grid .project:nth-child(1) .project__result', 'Clearer processes on the surface and solid connections underneath.'],
+        ['.project-grid .project:nth-child(1) .project__result', 'Hands-on experience in business digitalization.'],
         ['.project-grid .project:nth-child(1) .project-link', 'Visit Rapyvet'],
         ['.project-grid .project:nth-child(2) .project__index', '03 · Product development'],
         ['.project-grid .project:nth-child(2) .project__role', 'Clinical management platform'],
@@ -573,11 +697,11 @@
         ['.process__step:nth-child(3) p', 'I implement in layers, connect systems, and use AI where it creates real value.'],
         ['.process__step:nth-child(4) h3', 'Validate'],
         ['.process__step:nth-child(4) p', 'I test, observe, correct, and document to deliver a reliable solution.'],
-        ['#experiencia .eyebrow', 'Experience'],
+        ['#experiencia .eyebrow', 'Who’s behind it'],
         ['#experiencia .heading', 'Solve, build, and improve.'],
-        ['.timeline__item:nth-child(1) h3', 'Software Quality Engineer & IT Consultant'],
+        ['.timeline__item:nth-child(1) h3', 'Technology, Automation & Applied AI Consultant'],
         ['.timeline__item:nth-child(1) .timeline__company', 'Independent'],
-        ['.timeline__item:nth-child(1) .timeline__copy', 'Software development, quality assurance, automation, API integrations, AI-assisted engineering, and enterprise systems consulting.'],
+        ['.timeline__item:nth-child(1) .timeline__copy', 'Digital growth, software development, API and Odoo integrations, process automation, applied AI, and quality assurance for businesses.'],
         ['.timeline__item:nth-child(2) h3', 'Apple Solutions Consultant'],
         ['.timeline__item:nth-child(2) .timeline__copy', 'Technical consulting, diagnostics, needs analysis, team training, knowledge transfer, and continuous improvement.'],
         ['#herramientas .eyebrow', 'Tools'],
@@ -586,26 +710,27 @@
         ['.tool-group:nth-child(3) h3', 'Applied AI'],
         ['.tool-group:nth-child(3) p', 'OpenAI · Codex · ChatGPT · Ollama · Agents · Local models'],
         ['.tool-group:nth-child(4) h3', 'Quality and business'],
-        ['#contacto .eyebrow', "Let's talk"],
-        ['#contacto .heading', 'Do you have a problem worth solving?'],
-        ['#contacto .lead', 'Let’s build something useful, clear, and reliable. I can help turn an operational or technical need into a solution that works.'],
-        ['#contacto .hero__actions .button--secondary', 'View GitHub'],
+        ['#contacto .eyebrow', 'Contact'],
+        ['#contacto .heading', 'Let’s talk about your operation.'],
+        ['#contacto .lead', 'Request a Digital + AI Assessment and let’s review together what your company should improve first.'],
+        ['#contacto .hero__actions .button--secondary', 'Message me on LinkedIn'],
         ['.footer p', '© 2026 Angel Araguz · Nuevo León, Mexico'],
         ['.footer__links a:last-child', 'Back to top ↑']
       ];
 
       const englishHtml = [
-        ['.hero__copy .display', 'I build intelligent software<br><span class="accent">that works in the real world.</span>'],
-        ['.hero__copy .hero__actions .button--primary', 'Explore my work <span class="arrow" aria-hidden="true">→</span>'],
+        ['.hero__copy .display', 'More sales opportunities.<br><span class="accent">Less manual work.</span>'],
+        ['.hero__copy .hero__actions .button--primary', 'Request an assessment <span class="arrow" aria-hidden="true">→</span>'],
         ['#enfoque .heading', 'AI as leverage.<br><span class="accent">Not decoration.</span>'],
         ['.timeline__item:nth-child(1) .timeline__date', '2026 — PRESENT<br>MEXICO'],
-        ['#contacto .hero__actions .button--primary', 'Tell me about your project <span class="arrow" aria-hidden="true">→</span>']
+        ['#contacto .hero__actions .button--primary', 'Request an assessment <span class="arrow" aria-hidden="true">→</span>']
       ];
 
       const englishAttributes = [
         ['.brand', 'aria-label', 'Go to home'],
         ['#nav-links', 'aria-label', 'Main navigation'],
-        ['.hero__meta', 'aria-label', 'Areas of expertise'],
+        ['.hero__meta', 'aria-label', 'Service areas'],
+        ['[data-mail="diagnostic"]', 'href', 'mailto:angelauriazul25@gmail.com?subject=Digital%20%2B%20AI%20Assessment%20Request'],
         ['.capability-bar', 'aria-label', 'Core capabilities'],
         ['#transicion', 'aria-label', 'From complex problems to smarter systems'],
         ['#ai-flow', 'aria-label', 'Artificial intelligence workflow'],
@@ -628,6 +753,8 @@
       const spanishText = new Map();
       const spanishHtml = new Map();
       const spanishAttributes = new Map();
+      const inlineTranslations = [...document.querySelectorAll('[data-en]')];
+      const inlineSpanish = new Map(inlineTranslations.map(element => [element, element.innerHTML]));
       englishText.forEach(([selector]) => document.querySelectorAll(selector).forEach(element => spanishText.set(element, element.textContent)));
       englishHtml.forEach(([selector]) => document.querySelectorAll(selector).forEach(element => spanishHtml.set(element, element.innerHTML)));
       englishAttributes.forEach(([selector, attribute]) => document.querySelectorAll(selector).forEach(element => {
@@ -637,10 +764,10 @@
 
       const pageCopy = {
         'es-MX': {
-          title: 'Angel Araguz — Ingeniería de software, IA aplicada y calidad',
-          description: 'Portafolio de Angel Araguz: ingeniería de software, IA aplicada, automatización, integraciones y calidad para resolver problemas reales.',
-          ogTitle: 'Angel Araguz — Software que resuelve problemas reales',
-          ogDescription: 'Ingeniería de software, IA aplicada, automatización y calidad, de la idea a una solución confiable.',
+          title: 'Angel Araguz — Marketing, software y automatización con IA para empresas',
+          description: 'Ayudo a empresas de Nuevo León y México a conseguir más oportunidades comerciales y reducir trabajo manual con marketing digital, software, Odoo, integraciones y automatización con IA.',
+          ogTitle: 'Angel Araguz — Más oportunidades comerciales, menos trabajo manual',
+          ogDescription: 'Growth, Technology y AI Automation: marketing, software, integraciones e IA aplicada a procesos concretos. Solicita un Diagnóstico Digital + IA.',
           switchLabel: 'Cambiar idioma',
           esLabel: 'Cambiar a español latino',
           enLabel: 'Cambiar a inglés de Estados Unidos',
@@ -648,10 +775,10 @@
           menuClose: 'Cerrar menú'
         },
         'en-US': {
-          title: 'Angel Araguz — Software Engineering, Applied AI, and Quality',
-          description: 'Angel Araguz portfolio: software engineering, applied AI, automation, integrations, and quality focused on solving real-world problems.',
-          ogTitle: 'Angel Araguz — Software that solves real-world problems',
-          ogDescription: 'Software engineering, applied AI, automation, and quality—from idea to reliable solution.',
+          title: 'Angel Araguz — Marketing, Software, and AI Automation for Businesses',
+          description: 'I help companies in Nuevo León and across Mexico win more sales opportunities and reduce manual work with digital marketing, software, Odoo, integrations, and AI automation.',
+          ogTitle: 'Angel Araguz — More sales opportunities, less manual work',
+          ogDescription: 'Growth, Technology, and AI Automation: marketing, software, integrations, and AI applied to concrete processes. Request a Digital + AI Assessment.',
           switchLabel: 'Change language',
           esLabel: 'Switch to Latin American Spanish',
           enLabel: 'Switch to US English',
@@ -677,6 +804,9 @@
         englishHtml.forEach(([selector, translation]) => document.querySelectorAll(selector).forEach(element => {
           element.innerHTML = isEnglish ? translation : spanishHtml.get(element);
         }));
+        inlineTranslations.forEach(element => {
+          element.innerHTML = isEnglish ? element.dataset.en : inlineSpanish.get(element);
+        });
         englishAttributes.forEach(([selector, attribute, translation]) => document.querySelectorAll(selector).forEach(element => {
           const spanishValue = spanishAttributes.get(element)?.get(attribute);
           if (isEnglish) element.setAttribute(attribute, translation);
