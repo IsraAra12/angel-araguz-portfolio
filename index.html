@@ -147,9 +147,16 @@
     .tag { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: #c7c7cc; font-family: "JetBrains Mono", monospace; font-size: 10px; font-weight: 500; }
     .project-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
     .project-grid .project { display: flex; flex-direction: column; }
+    .project-grid > .project { margin-top: 0; }
     .project-grid .project__media { aspect-ratio: 16 / 10; }
     .project-grid .project__media img { min-height: 0; }
-    .project-grid .project__content { min-height: 430px; }
+    .project-grid .project__media--capture { aspect-ratio: auto; }
+    .project__media--capture img { height: auto; aspect-ratio: 16 / 10; }
+    .project__browser { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 10px; }
+    .project__browser::before { content: ""; width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: var(--green); }
+    .project__capture-note { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .project-grid .project__content { flex: 1; min-height: 430px; }
+    .project-grid .project__index { margin-bottom: 0; }
     .project-grid .project__content h3 { margin-top: 34px; }
     .project__result { margin-top: auto !important; padding-top: 32px; color: var(--text) !important; font-size: 14px; font-weight: 650; }
     .project-link { display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 22px; color: var(--blue-bright); font-size: 13px; font-weight: 700; text-decoration: none; }
@@ -548,11 +555,43 @@
           </div>
         </div>
         <div class="project-grid">
-          <article class="project reveal"><div class="project__media"><img src="assets/images/rapyvet-system.webp" width="1536" height="1024" alt="Visualización de un sistema empresarial conectado para ventas, inventario, clientes y automatización" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">02 · Sistemas empresariales</p><h3>Rapyvet</h3><p class="project__role">Digitalización y operaciones</p><p>Soluciones para procesos comerciales y operativos: integraciones con Odoo, herramientas de captura de pedidos, aplicaciones web y automatización alrededor del trabajo diario.</p><div class="tags"><span class="tag">Odoo Enterprise</span><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">Automatización</span></div><p class="project__result">Experiencia práctica en digitalización empresarial.</p><a class="project-link" href="https://rapyvet.vercel.app" target="_blank" rel="noopener noreferrer">Visitar Rapyvet</a></div></article>
-          <article class="project reveal"><div class="project__media"><img src="assets/images/vetflow-clinical.webp" width="1536" height="1024" alt="Tableta con una interfaz conceptual para administrar pacientes, citas y expedientes veterinarios" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">03 · Desarrollo de producto</p><h3>VetFlow</h3><p class="project__role">Plataforma de gestión clínica</p><p>Aplicación web responsiva para organizar pacientes, expedientes, citas y seguimientos clínicos sin perder contexto entre tareas.</p><div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">UX responsiva</span><span class="tag">Vercel</span></div><p class="project__result">Información organizada · Flujos claros · Experiencia adaptable a cada pantalla</p><a class="project-link" href="https://vet-flow-psi.vercel.app" target="_blank" rel="noopener noreferrer">Visitar VetFlow</a></div></article>
+          <article class="project reveal" id="proyecto-jimcat">
+            <figure class="project__media project__media--capture">
+              <div class="project__browser" aria-hidden="true">jimcatpet.shop</div>
+              <img src="assets/images/jimcatpet-web.webp" width="1440" height="900" alt="Captura real de Jim &amp; Cat PetShop con su tienda en línea, buscador y categorías de productos veterinarios" loading="lazy" decoding="async">
+              <figcaption class="project__capture-note" data-en="Live storefront · E-commerce connected to Odoo">Tienda en línea · Comercio electrónico conectado a Odoo</figcaption>
+            </figure>
+            <div class="project__content">
+              <p class="project__index" data-en="02 · E-commerce + Odoo">02 · Comercio electrónico + Odoo</p>
+              <h3>Jim &amp; Cat PetShop</h3>
+              <p class="project__role" data-en="Online store connected to Odoo">Tienda en línea conectada a Odoo</p>
+              <p data-en="Veterinary e-commerce with product search, categories, a shopping cart, and order tracking. A storefront connected to Odoo that brings the product catalog and purchasing experience together.">Comercio electrónico veterinario con buscador, categorías, carrito y seguimiento de pedidos. Una tienda conectada a Odoo que reúne el catálogo y la experiencia de compra en un mismo lugar.</p>
+              <div class="tags"><span class="tag">Odoo</span><span class="tag">E-commerce</span><span class="tag">APIs</span><span class="tag" data-en="Web development">Desarrollo web</span></div>
+              <p class="project__result" data-en="From browsing the catalog to tracking an order.">Del catálogo al seguimiento de cada pedido.</p>
+              <a class="project-link" href="https://jimcatpet.shop/" target="_blank" rel="noopener noreferrer" data-en="Visit Jim &amp; Cat">Visitar Jim &amp; Cat</a>
+            </div>
+          </article>
+          <article class="project reveal" id="proyecto-rapyvet-pedidos">
+            <figure class="project__media project__media--capture">
+              <div class="project__browser" aria-hidden="true">rapyvet-pedidos.pages.dev</div>
+              <img src="assets/images/rapyvet-pedidos.webp" width="1120" height="700" alt="Captura real de la pantalla de acceso de Rapyvet Pedidos con ID de Odoo, sin nombres ni precios de productos" loading="lazy" decoding="async">
+              <figcaption class="project__capture-note" data-en="Sign-in screen · No product or pricing data shown">Pantalla de acceso · Sin datos de productos ni precios</figcaption>
+            </figure>
+            <div class="project__content">
+              <p class="project__index" data-en="03 · Sales + Odoo">03 · Ventas + Odoo</p>
+              <h3>Rapyvet Pedidos</h3>
+              <p class="project__role" data-en="Order app for field sales">App de pedidos para ventas en campo</p>
+              <p data-en="Web application connected to Odoo for Rapyvet’s sales team to capture orders. Staff sign in with their Odoo ID and PIN to access the sales workflow.">Aplicación web conectada a Odoo para la captura de pedidos del equipo comercial de Rapyvet. Los vendedores ingresan con su ID de Odoo y NIP para acceder al flujo de ventas.</p>
+              <div class="tags"><span class="tag">Odoo</span><span class="tag">Web app</span><span class="tag">APIs</span><span class="tag" data-en="Field sales">Ventas en campo</span></div>
+              <p class="project__result" data-en="Order capture connected to the business operation.">Captura de pedidos conectada con la operación del negocio.</p>
+              <a class="project-link" href="https://rapyvet-pedidos.pages.dev/" target="_blank" rel="noopener noreferrer" data-en="View Rapyvet Pedidos">Ver Rapyvet Pedidos</a>
+            </div>
+          </article>
+          <article class="project reveal" id="proyecto-rapyvet"><div class="project__media"><img src="assets/images/rapyvet-system.webp" width="1536" height="1024" alt="Visualización de un sistema empresarial conectado para ventas, inventario, clientes y automatización" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">04 · Sistemas empresariales</p><h3>Rapyvet</h3><p class="project__role">Digitalización y operaciones</p><p>Soluciones para procesos comerciales y operativos: integraciones con Odoo, herramientas de captura de pedidos, aplicaciones web y automatización alrededor del trabajo diario.</p><div class="tags"><span class="tag">Odoo Enterprise</span><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">Automatización</span></div><p class="project__result">Experiencia práctica en digitalización empresarial.</p><a class="project-link" href="https://rapyvet.vercel.app" target="_blank" rel="noopener noreferrer">Visitar Rapyvet</a></div></article>
+          <article class="project reveal" id="proyecto-vetflow"><div class="project__media"><img src="assets/images/vetflow-clinical.webp" width="1536" height="1024" alt="Tableta con una interfaz conceptual para administrar pacientes, citas y expedientes veterinarios" loading="lazy" decoding="async"></div><div class="project__content"><p class="project__index">05 · Desarrollo de producto</p><h3>VetFlow</h3><p class="project__role">Plataforma de gestión clínica</p><p>Aplicación web responsiva para organizar pacientes, expedientes, citas y seguimientos clínicos sin perder contexto entre tareas.</p><div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">UX responsiva</span><span class="tag">Vercel</span></div><p class="project__result">Información organizada · Flujos claros · Experiencia adaptable a cada pantalla</p><a class="project-link" href="https://vet-flow-psi.vercel.app" target="_blank" rel="noopener noreferrer">Visitar VetFlow</a></div></article>
         </div>
         <article class="quality-card reveal">
-          <div><p class="eyebrow">04 · Ingeniería de calidad</p><h3>Urban Routes</h3><p>Automatización de pruebas sobre recorridos reales de usuario: interfaz, pagos, tráfico de red, respuestas del sistema y validaciones de punta a punta.</p><div class="tags"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Pytest</span><span class="tag">Chrome DevTools</span></div></div>
+          <div><p class="eyebrow">06 · Ingeniería de calidad</p><h3>Urban Routes</h3><p>Automatización de pruebas sobre recorridos reales de usuario: interfaz, pagos, tráfico de red, respuestas del sistema y validaciones de punta a punta.</p><div class="tags"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Pytest</span><span class="tag">Chrome DevTools</span></div></div>
           <div class="test-flow" aria-label="Flujo de validación de Urban Routes"><div class="test-node">ACCIÓN</div><div class="test-node">INTERFAZ</div><div class="test-node">RED</div><div class="test-node">RESPUESTA</div><div class="test-node">VALIDACIÓN</div></div>
         </article>
       </div>
@@ -671,19 +710,19 @@
         ['.aura-state:nth-child(4) .aura-state__index', '04 / QUALITY'],
         ['.aura-state:nth-child(4) h4', 'Testing in every iteration.'],
         ['.aura-state:nth-child(4) p', 'Unit tests, integration testing, linting, and build validation are part of every experiment.'],
-        ['.project-grid .project:nth-child(1) .project__index', '02 · Enterprise systems'],
-        ['.project-grid .project:nth-child(1) .project__role', 'Digital operations'],
-        ['.project-grid .project:nth-child(1) .project__content > p:nth-of-type(3)', 'Solutions for sales and operational processes: Odoo integrations, order capture tools, web applications, and automation built around daily work.'],
-        ['.project-grid .project:nth-child(1) .tag:last-child', 'Automation'],
-        ['.project-grid .project:nth-child(1) .project__result', 'Hands-on experience in business digitalization.'],
-        ['.project-grid .project:nth-child(1) .project-link', 'Visit Rapyvet'],
-        ['.project-grid .project:nth-child(2) .project__index', '03 · Product development'],
-        ['.project-grid .project:nth-child(2) .project__role', 'Clinical management platform'],
-        ['.project-grid .project:nth-child(2) .project__content > p:nth-of-type(3)', 'Responsive web application for organizing patients, medical records, appointments, and clinical follow-ups without losing context between tasks.'],
-        ['.project-grid .project:nth-child(2) .tag:nth-child(3)', 'Responsive UX'],
-        ['.project-grid .project:nth-child(2) .project__result', 'Organized information · Clear workflows · An experience that adapts to every screen'],
-        ['.project-grid .project:nth-child(2) .project-link', 'Visit VetFlow'],
-        ['.quality-card .eyebrow', '04 · Quality engineering'],
+        ['#proyecto-rapyvet .project__index', '04 · Enterprise systems'],
+        ['#proyecto-rapyvet .project__role', 'Digital operations'],
+        ['#proyecto-rapyvet .project__content > p:nth-of-type(3)', 'Solutions for sales and operational processes: Odoo integrations, order capture tools, web applications, and automation built around daily work.'],
+        ['#proyecto-rapyvet .tag:last-child', 'Automation'],
+        ['#proyecto-rapyvet .project__result', 'Hands-on experience in business digitalization.'],
+        ['#proyecto-rapyvet .project-link', 'Visit Rapyvet'],
+        ['#proyecto-vetflow .project__index', '05 · Product development'],
+        ['#proyecto-vetflow .project__role', 'Clinical management platform'],
+        ['#proyecto-vetflow .project__content > p:nth-of-type(3)', 'Responsive web application for organizing patients, medical records, appointments, and clinical follow-ups without losing context between tasks.'],
+        ['#proyecto-vetflow .tag:nth-child(3)', 'Responsive UX'],
+        ['#proyecto-vetflow .project__result', 'Organized information · Clear workflows · An experience that adapts to every screen'],
+        ['#proyecto-vetflow .project-link', 'Visit VetFlow'],
+        ['.quality-card .eyebrow', '06 · Quality engineering'],
         ['.quality-card > div:first-child > p:not(.eyebrow)', 'Test automation across real user journeys: interface, payments, network traffic, system responses, and end-to-end validation.'],
         ['.test-node:nth-child(1)', 'ACTION'],
         ['.test-node:nth-child(2)', 'INTERFACE'],
@@ -748,8 +787,10 @@
         ['.aura-state:nth-child(2)', 'data-label', 'Intelligence'],
         ['.aura-state:nth-child(3)', 'data-label', 'Control'],
         ['.aura-state:nth-child(4)', 'data-label', 'Quality'],
-        ['.project-grid .project:nth-child(1) img', 'alt', 'Visualization of an enterprise system connecting sales, inventory, customers, and automation'],
-        ['.project-grid .project:nth-child(2) img', 'alt', 'Tablet with a conceptual interface for managing patients, appointments, and veterinary records'],
+        ['#proyecto-jimcat img', 'alt', 'Live screenshot of Jim & Cat PetShop with its online store, search, and veterinary product categories'],
+        ['#proyecto-rapyvet-pedidos img', 'alt', 'Live screenshot of the Rapyvet Pedidos sign-in screen with Odoo ID, showing no product names or prices'],
+        ['#proyecto-rapyvet img', 'alt', 'Visualization of an enterprise system connecting sales, inventory, customers, and automation'],
+        ['#proyecto-vetflow img', 'alt', 'Tablet with a conceptual interface for managing patients, appointments, and veterinary records'],
         ['.test-flow', 'aria-label', 'Urban Routes validation workflow'],
         ['.brand-lockup', 'alt', 'Angel Araguz logo']
       ];
