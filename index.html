@@ -155,6 +155,19 @@
     .project__browser { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 10px; }
     .project__browser::before { content: ""; width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: var(--green); }
     .project__capture-note { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .project-gallery { position: relative; aspect-ratio: 16 / 10; background: #0e1010; }
+    .project-gallery__open { display: block; height: 100%; }
+    .project-gallery__open img { height: 100%; object-fit: contain; }
+    .project-gallery__enlarge { position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--line-strong); border-radius: 10px; background: rgba(0,0,0,.8); color: #fff; font-size: 18px; }
+    .project-gallery__views { position: absolute; right: 10px; bottom: 10px; left: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; width: fit-content; max-width: calc(100% - 20px); margin-inline: auto; padding: 4px; border: 1px solid var(--line-strong); border-radius: 14px; background: rgba(7,9,12,.94); }
+    .project-gallery__views button { min-height: 34px; padding: 7px 10px; border: 0; border-radius: 10px; background: transparent; color: #c7c7cc; font-size: 11px; font-weight: 650; cursor: pointer; }
+    .project-gallery__views button:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .project-gallery__views button[aria-pressed="true"] { color: #fff; background: var(--blue); }
+    .project-gallery__views button:focus-visible, .project-gallery__open:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: -2px; }
+    @media (max-width: 640px) {
+      .project-gallery__views { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; width: calc(100% - 20px); max-width: 330px; }
+      .project-gallery__views button { min-height: 32px; padding-inline: 2px; font-size: 10px; white-space: nowrap; }
+    }
     .project-grid .project__content { flex: 1; min-height: 430px; }
     .project-grid .project__index { margin-bottom: 0; }
     .project-grid .project__content h3 { margin-top: 34px; }
@@ -574,8 +587,20 @@
           <article class="project reveal" id="proyecto-rapyvet-pedidos">
             <figure class="project__media project__media--capture">
               <div class="project__browser" aria-hidden="true">rapyvet-pedidos.pages.dev</div>
-              <img src="assets/images/rapyvet-pedidos.webp" width="1120" height="700" alt="Captura real de la pantalla de acceso de Rapyvet Pedidos con ID de Odoo, sin nombres ni precios de productos" loading="lazy" decoding="async">
-              <figcaption class="project__capture-note" data-en="Sign-in screen · No product or pricing data shown">Pantalla de acceso · Sin datos de productos ni precios</figcaption>
+              <div class="project-gallery" id="rapyvet-gallery">
+                <a class="project-gallery__open" href="assets/images/rapyvet-pedidos-catalogo.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar la captura de Rapyvet Pedidos">
+                  <img id="rapyvet-gallery-image" src="assets/images/rapyvet-pedidos-catalogo.jpg" width="1440" height="900" alt="Catálogo de Rapyvet Pedidos con nombres de productos, códigos y precios ocultos" loading="lazy" decoding="async">
+                  <span class="project-gallery__enlarge" aria-hidden="true">↗</span>
+                </a>
+                <div class="project-gallery__views" role="group" aria-label="Vistas de Rapyvet Pedidos">
+                  <button type="button" data-rapyvet-view="0" aria-pressed="false" data-en="Home">Inicio</button>
+                  <button type="button" data-rapyvet-view="1" aria-pressed="false" data-en="Clients">Clientes</button>
+                  <button type="button" data-rapyvet-view="2" aria-pressed="true" data-en="Catalog">Catálogo</button>
+                  <button type="button" data-rapyvet-view="3" aria-pressed="false" data-en="Cart">Carrito</button>
+                  <button type="button" data-rapyvet-view="4" aria-pressed="false" data-en="Sign in">Acceso</button>
+                </div>
+              </div>
+              <figcaption class="project__capture-note" id="rapyvet-gallery-caption" aria-live="polite">Catálogo de productos · Nombres, códigos y precios ocultos</figcaption>
             </figure>
             <div class="project__content">
               <p class="project__index" data-en="03 · Sales + Odoo">03 · Ventas + Odoo</p>
@@ -645,6 +670,42 @@
       const localeButtons = [...languageSwitch.querySelectorAll('[data-locale]')];
       const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
       let currentLocale = 'es-MX';
+
+      const rapyvetGallery = document.getElementById('rapyvet-gallery');
+      const rapyvetImage = document.getElementById('rapyvet-gallery-image');
+      const rapyvetCaption = document.getElementById('rapyvet-gallery-caption');
+      const rapyvetOpen = rapyvetGallery.querySelector('.project-gallery__open');
+      const rapyvetViewButtons = [...rapyvetGallery.querySelectorAll('[data-rapyvet-view]')];
+      const rapyvetViews = [
+        ['inicio', 'Panel de inicio de Rapyvet Pedidos con resumen de actividad y datos del cliente ocultos', 'Rapyvet Pedidos home dashboard with an activity overview and hidden client details', 'Panel de inicio · Resumen del trabajo en campo', 'Home dashboard · Field sales overview'],
+        ['clientes', 'Selección de clientes en Odoo con nombres y datos de contacto ocultos', 'Odoo client selection with names and contact details hidden', 'Selección de cliente · Nombres y datos de contacto ocultos', 'Client selection · Names and contact details hidden'],
+        ['catalogo', 'Catálogo de Rapyvet Pedidos con nombres de productos, códigos y precios ocultos', 'Rapyvet Pedidos catalog with product names, codes, and prices hidden', 'Catálogo de productos · Nombres, códigos y precios ocultos', 'Product catalog · Names, codes, and prices hidden'],
+        ['carrito', 'Carrito de Rapyvet Pedidos con cantidades editables y nombres, precios e importes ocultos', 'Rapyvet Pedidos cart with editable quantities and hidden names, prices, and totals', 'Revisión del carrito · Productos, precios e importes ocultos', 'Cart review · Products, prices, and totals hidden'],
+        ['acceso', 'Pantalla de acceso de Rapyvet Pedidos con ID de Odoo y NIP, sin credenciales visibles', 'Rapyvet Pedidos sign-in screen with Odoo ID and PIN, showing no credentials', 'Acceso con Odoo · Sin credenciales visibles', 'Odoo sign-in · No credentials shown']
+      ];
+      let currentRapyvetView = 2;
+      const showRapyvetView = index => {
+        currentRapyvetView = index;
+        const [view, spanishAlt, englishAlt, spanishCaption, englishCaption] = rapyvetViews[index];
+        const imagePath = view === 'acceso' ? 'assets/images/rapyvet-pedidos.webp' : `assets/images/rapyvet-pedidos-${view}.jpg`;
+        const isEnglish = currentLocale === 'en-US';
+        rapyvetImage.src = imagePath;
+        rapyvetImage.alt = isEnglish ? englishAlt : spanishAlt;
+        rapyvetImage.width = view === 'acceso' ? 1120 : 1440;
+        rapyvetImage.height = view === 'acceso' ? 700 : 900;
+        rapyvetOpen.href = imagePath;
+        rapyvetCaption.textContent = isEnglish ? englishCaption : spanishCaption;
+        rapyvetViewButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+      };
+      rapyvetViewButtons.forEach((button, index) => button.addEventListener('click', () => showRapyvetView(index)));
+      rapyvetGallery.querySelector('.project-gallery__views').addEventListener('keydown', event => {
+        const directions = { ArrowRight: 1, ArrowLeft: -1 };
+        if (!(event.key in directions)) return;
+        event.preventDefault();
+        const index = (currentRapyvetView + directions[event.key] + rapyvetViews.length) % rapyvetViews.length;
+        showRapyvetView(index);
+        rapyvetViewButtons[index].focus();
+      });
 
       const englishText = [
         ['.skip-link', 'Skip to content'],
@@ -788,7 +849,8 @@
         ['.aura-state:nth-child(3)', 'data-label', 'Control'],
         ['.aura-state:nth-child(4)', 'data-label', 'Quality'],
         ['#proyecto-jimcat img', 'alt', 'Live screenshot of Jim & Cat PetShop with its online store, search, and veterinary product categories'],
-        ['#proyecto-rapyvet-pedidos img', 'alt', 'Live screenshot of the Rapyvet Pedidos sign-in screen with Odoo ID, showing no product names or prices'],
+        ['.project-gallery__open', 'aria-label', 'Enlarge the Rapyvet Pedidos screenshot'],
+        ['.project-gallery__views', 'aria-label', 'Rapyvet Pedidos views'],
         ['#proyecto-rapyvet img', 'alt', 'Visualization of an enterprise system connecting sales, inventory, customers, and automation'],
         ['#proyecto-vetflow img', 'alt', 'Tablet with a conceptual interface for managing patients, appointments, and veterinary records'],
         ['.test-flow', 'aria-label', 'Urban Routes validation workflow'],
@@ -866,6 +928,7 @@
         menuToggle.setAttribute('aria-label', menuToggle.getAttribute('aria-expanded') === 'true' ? page.menuClose : page.menuOpen);
         const activeAuraState = auraStates.find(state => state.classList.contains('is-active')) || auraStates[0];
         if (auraBadge && activeAuraState) auraBadge.textContent = activeAuraState.dataset.label || '';
+        showRapyvetView(currentRapyvetView);
         try { localStorage.setItem('angel-araguz-locale', currentLocale); } catch {}
       };
 
