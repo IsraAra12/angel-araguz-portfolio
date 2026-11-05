@@ -272,6 +272,9 @@
     .contact .heading { max-width: 950px; margin-inline: auto; }
     .contact .lead { max-width: 670px; margin: 28px auto 0; }
     .contact .hero__actions { justify-content: center; }
+    .contact__social { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
+    .contact__social .button { width: auto; }
+    .contact__social svg { width: 18px; height: 18px; flex: none; }
     .contact-form { display: grid; gap: 20px; max-width: 690px; margin: 42px auto 0; padding: clamp(20px, 4vw, 36px); scroll-margin-top: calc(var(--nav) + 18px); border: 1px solid var(--line); border-radius: 24px; background: var(--surface); text-align: left; }
     .contact-form h3 { margin: 0; font-size: clamp(20px, 3vw, 26px); }
     .contact-form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -657,6 +660,16 @@
     </section>
     <section class="contact section-border" id="contacto">
       <div class="container reveal"><img class="brand-lockup" src="assets/images/angel-araguz-logo.webp" width="1024" height="1024" alt="Logotipo de Angel Araguz" loading="lazy" decoding="async"><p class="eyebrow">Contacto</p><h2 class="heading">Conversemos sobre tu operación.</h2><p class="lead">Solicita un Diagnóstico Digital + IA y revisemos juntos qué conviene mejorar primero en tu empresa.</p><p class="contact__hint" data-en="To prepare the conversation, tell me your industry, the size of your team, and which process takes up the most time today.">Para preparar la conversación, cuéntame tu giro, el tamaño de tu equipo y qué proceso te quita más tiempo hoy.</p><div class="hero__actions"><a class="button button--primary" href="#solicitud-diagnostico">Solicitar un diagnóstico <span class="arrow" aria-hidden="true">→</span></a><a class="button button--secondary" href="https://linkedin.com/in/angelaraguzgzz" target="_blank" rel="noopener noreferrer">Escríbeme por LinkedIn</a><a class="button button--whatsapp" data-whatsapp href="https://wa.me/19452863684?text=Hola%20Angel%2C%20me%20interesa%20un%20Diagn%C3%B3stico%20Digital%20%2B%20IA%20para%20mi%20empresa." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span data-en="Message me on WhatsApp">Escríbeme por WhatsApp</span></a></div>
+        <nav class="contact__social" aria-label="Facebook e Instagram">
+          <a class="button button--secondary" href="https://www.facebook.com/profile.php?id=61580816827035" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 22v-9h3l.5-4H14V6.5c0-1 .3-1.5 1.7-1.5H18V1.4a28 28 0 0 0-3.3-.4C11.4 1 10 3 10 6.2V9H7v4h3v9z"/></svg>
+            Facebook
+          </a>
+          <a class="button button--secondary" href="https://www.instagram.com/araguzconsulting/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </nav>
         <form class="contact-form" id="solicitud-diagnostico" method="post" action="/api/contact" aria-labelledby="solicitud-titulo">
           <h3 id="solicitud-titulo" data-en="Request a Digital + AI Assessment">Solicita un Diagnóstico Digital + IA</h3>
           <div class="contact-form__grid">
